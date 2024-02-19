@@ -22,6 +22,8 @@ En la sesión de clase se abordaran los siguientes conceptos:
 
 ## Trabajo previo
 
+### Aplicaciones locales
+
 Antes de empezar asegurese de tene instalado en su computador el siguiente software:
 - [x] Arduino IDE (https://www.arduino.cc/)
 - [x] Visual Studio Code (https://code.visualstudio.com/)
@@ -32,7 +34,13 @@ Antes de empezar asegurese de tene instalado en su computador el siguiente softw
 - [ ] Mqtt explorer (http://mqtt-explorer.com/)
 - [x] Node-red (https://nodered.org/)
 
-* **Nota**: Los programas que no se encuentran seleccinados no son necesarios instalarlos por el momento. Para mas información puede consultar el siguiente [link](https://udea-iot.gitbook.io/introduccion-al-iot/pasos-previos/herramientas-necesarias/software)
+> **Nota**: Los programas que no se encuentran seleccinados no son necesarios instalarlos por el momento. Para mas información puede consultar el siguiente [link](https://udea-iot.gitbook.io/introduccion-al-iot/pasos-previos/herramientas-necesarias/software)
+
+### Aplicaciones online
+
+La siguiente es una lista de aplicaciones que se usaran para propositos de simulación. Para usarlas basta con tener una cuenta de correo como la de google poe ejemplo:
+- [ ] Tinkercad (https://www.tinkercad.com/)
+- [ ] Wokwi (https://wokwi.com/)
 
 ## Trabajo de clase
 
@@ -75,16 +83,52 @@ Mediante los sensores y los actuadores es como la cosa interactua con el entorno
   
   ![sensores_ladzo](sensores_ladzo.png)
 
-
 > Para conocer mas sobre los sensores [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/inventario-lab)
 
+### 4. Trabajando con las placas de desarrollo a estudiar
+
+Cuando se trabaja con un sistema de desarrollo, lo primero que hay que hacer es conocerlo. Para ello es necesario consultar la documentación de la cual este dispone como manual de usuario, datasheet, ejemplos y el diagrama de pines.
+
+Este último es sumamente importante pues nos indicará los nombres, numeros y funciones que tendran los pines que se conectaran a los elementos externos (sensores, actuadores y/o otros sistemas de desarrollo) a los sistemas de desarrollo. 
+
+El conocimiento de los pines es ademas importante por que constituye el punto de partida para la configuración de los puertos y modulos de software que serán empleados en la aplicación IoT en cuestión.
+
+A continuación se muestra el diagrama de pines para el Arduino UNO y el ESP32.
+
+* **Mapa de pines Arduino UNO**
+  
+  ![arduino_uno_pinout](arduino_uno-pinout.png)
+
+* **Mapa de pines ESP32**
+
+  ![esp32_pinout](nodemcu-esp_32s-pines.jpg)
+
+> Para profundizar mas consulte la información relacionada con los sistemas de desarrollo anteriores en el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
+
+### 5. Prototipado básico
+
+Fritzing es una plataforma para plataforma permitira prototipar hardware en su computador y verificar su funcionamiento antes de hacer el montaje en fisico.
+
+![fritzing](Fritzing_breadboard_view.jpg)
+
+> Consulte la sección **Prototipado básico usando fritzing** en el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
+
+Poner un ejercicio por equipo de usar fritzing para...
+
+### 6. Arduino Framework
+
+Colocar información basica sobre el framework de arduino...
+
+### 7. Sensores básicos
+
+Analogos y digitales y colocar algunos ejemplos...
 
 ## Lista de avance
 
 - [ ] 1. Ejemplo de un sistema IoT
 - [ ] 2. Sistemas de desarrollo
 - [ ] 3. Sensores y actuadores
+- [ ] 4. Trabajando con las placas de desarrollo a estudiar
 - [ ] https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/sensores/intro
-
 
 
