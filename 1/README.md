@@ -44,7 +44,7 @@ La siguiente es una lista de aplicaciones que se usaran para propositos de simul
 
 ## Trabajo de clase
 
-### 1. Ejemplo de un sistema IoT
+## 1. Ejemplo de un sistema IoT
 
 A continuación se muestra el diagrama de un sistema de control en tiempo real para jugar con un laberinto hecho en la universidad de Curtin (https://www.curtin.edu.au/):
 
@@ -55,7 +55,7 @@ En el siguiente video se puede observar el funcionamiento de dicho sistema:
 [![IOT3x - IoT Networks and Protocols](https://img.youtube.com/vi/ErS2W58StIs/0.jpg)](https://www.youtube.com/watch?v=ErS2W58StIs)
 
 
-### 2. Sistemas de desarrollo
+## 2. Sistemas de desarrollo
 
 El corazón de los sistemas IoT son las cosas. Estas, son las encargadas de permitir la interacción del sistema con el medio ambiente mediante la recolección, el procesamiento de los datos y las acciones de control sobre este. 
 
@@ -67,9 +67,9 @@ Para realizar labores de prototipado, se disponen de los elementos listados a co
 |Development boards|<li> Arduino UNO <li> ESP8266 <li> ESP32 <li>ARDUINO NANO 33 BLE Sense Lite|
 
 > **Para profundizar** <br>
-> Para conocer mas sobre estos elementos disponibles en el laboratorio consulte el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
+Para conocer mas sobre estos elementos disponibles en el laboratorio consulte el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
 
-### 3. Sensores y actuadores
+## 3. Sensores y actuadores
 
 Mediante los sensores y los actuadores es como la cosa interactua con el entorno (ambiente). Existen numerosos kits de iniciación en el mercado. En el laboratorio se disponen de los siguientes modulos:
 * Grove - Starter Kit v3
@@ -85,9 +85,9 @@ Mediante los sensores y los actuadores es como la cosa interactua con el entorno
   ![sensores_ladzo](sensores_ladzo.png)
 
 > **Para profundizar** <br>
-> Para conocer mas sobre los sensores [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/inventario-lab)
+Para conocer mas sobre los sensores [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/inventario-lab)
 
-### 4. Trabajando con las placas de desarrollo a estudiar
+## 4. Trabajando con las placas de desarrollo a estudiar
 
 Cuando se trabaja con un sistema de desarrollo, lo primero que hay que hacer es conocerlo. Para ello es necesario consultar la documentación de la cual este dispone como manual de usuario, datasheet, ejemplos y el diagrama de pines.
 
@@ -106,9 +106,9 @@ A continuación se muestra el diagrama de pines para el Arduino UNO y el ESP32.
   ![esp32_pinout](nodemcu-esp_32s-pines.jpg)
 
 > **Para profundizar** <br>
-> Para profundizar mas consulte la información relacionada con los sistemas de desarrollo anteriores en el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
+Para profundizar mas consulte la información relacionada con los sistemas de desarrollo anteriores en el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
 
-### 5. Prototipado básico
+## 5. Prototipado básico
 
 Fritzing es una plataforma para plataforma permitira prototipar hardware en su computador y verificar su funcionamiento antes de hacer el montaje en fisico.
 
@@ -145,13 +145,13 @@ Con esto ya definido, es posible empezar el proceso de prototipado el cual, se p
    ![pcb](fig-pcb.png)
 
 > **Importante** <br>
-> El último paso esta fuera del alcance de este curso por lo que no se hará a paso.
+El último paso esta fuera del alcance de este curso por lo que no se hará a paso.
 
 En la siguiente figura (tomada de [How to read a schematic](https://learn.sparkfun.com/tutorials/how-to-read-a-schematic) de Sparkfun) muestra algunos de los principales simbolos usados en esqumeticos:
 
 ![simbolos-esquemtatico](simbolos_esquematicos.png)
 
-#### **Ejemplo**
+### Ejemplo
 
 El siguiente ejemplo se resume el procedimiento anterior haciendo enfasis en los pasos 1 y 2. Para esto suponga que se desea diseñar un circuito que permita encender y apagar un del usando un interruptor.
 
@@ -176,7 +176,7 @@ El siguiente ejemplo se resume el procedimiento anterior haciendo enfasis en los
 
 Con el objetivo de afianzar el procedimiento anterior, lo invitamos a que desarrolle los siguientes dos ejercicios.
 
-#### **Ejercicio 1**
+### Ejercicio 1
 
 A continuación se muestra un circuito que permite variar la intensidad de un led a traves de un potenciometro conectado a un arduino. La lista de componentes se muestra en el siguiente BOM:
 
@@ -214,7 +214,7 @@ Realizar las siguientes tareas:
 
 3. Empleando Tinkercad (https://tinkercad.com/), realice el montaje, escriba el código para simular y proceda a realizar la simulación. Luego, haga publico el link de simulación para compartir su trabajo con la comunidad.
 
-#### **Ejercicio 2**
+### Ejercicio 2
 
 El siguiente sistema muestra un generador de tonos sencillo. La lista de componentes se muestra a continuación:
 
@@ -258,7 +258,7 @@ Realizar las siguientes tareas:
 
 3. Empleando Tinkercad (https://tinkercad.com/), realice el montaje, escriba el código para simular y proceda a realizar la simulación. Luego, haga publico el link de simulación para compartir su trabajo con la comunidad.
 
-### 7. Tarjetas de expación y modulos
+## 7. Tarjetas de expación y modulos
 
 El proceso de prototipado usando protoboard depende de la complejidad del circuito y de los componentes disponible y en el peor de los casos, puede ser sumamente completo (imagen tomada de **BREADBIN IS AN 8-BIT TTL CPU ON A BREADBOARD, IN A BREAD BIN** ([link](https://hackaday.com/2021/10/05/breadbin-is-an-8-bit-ttl-cpu-on-a-breadboard-in-a-bread-bin/))):
 
@@ -293,12 +293,96 @@ Existen una gran cantidad de fabricantes de modulos y tarjetas de expación, a c
 |keyestudio|https://www.keyestudio.com/|
 |Arduino|https://store-usa.arduino.cc/products/|
 
+## 8. Interacción con el entorno
 
-### 7. Sensores básicos
+Los **transductores** son los elemtos del sistema que permiten la interación del dispositivo IoT con el ambiente; son el equivalente a los sentidos los seres vivos y los perifericos en los computadores.
 
-Analogos y digitales y colocar algunos ejemplos...
+![sistema_electronico](sistema_electronico.png)
 
-### 8. Arduino Framework
+Por ejemplo, en la siguiente figura se muestra el diagrama de bloques de un sistema electronico que permite lanzar una alarma cuando la temperatura medida sobrepasa un valor determinado.
+
+![temperatura](sistema_electronico_ejemplo.png)
+
+### Sensores
+
+Un sensor es un tipo de transductor cuya función consiste transformar las señales del entorno (señales fisicas) en señales electricas las cuales son las entradas al sistema. La siguiente tabla, clasifica y resume algunos de los principales tipos de sensores:
+
+![lista_sensores](sensores_lista.png)
+
+
+Exiten diversas clasificaciones para los sensores dependiendo de diferentes criterios como: El tipo de señal ambiental sensada y el tipo de señal electrica entre otros. A continuación se tratan algunos.
+
+#### **Tipos de sensores de acuerdo a la señal ambiental sensada**
+
+Los sensores permiten medir muchas cosas, desde propiedades naturales taltes como la temperatura del aire a interacciones fisicas como el movimiento. Algunos tipos de sensores existentes son:
+* **Sensores de temperatura**: Permiten medir la temperatura del aire o el medio en el cual se encuentran inmersos. A veces suelen venir cominados con sensores de humedad y presión en un mismo modulo.
+* **Botones**: Permiten sensar cuando estos son presionados.
+* **Sensores de luz**: Estos detectan niveles de luz. Tambien permiten medir distintos tipos de luz (de colores especificos, ultravioleta, infraroja o luz visible en general).
+* **Acelerometros**: Permiten medir el movimiento en multiples direcciones.
+* **Microfonos**: estos permiten detectar sonidos.
+
+#### **Tipos de sensores de acuerdo a la señal electrica**
+
+De acuerdo al tipo de señal electrica obtenida a la entrada, los sensores se pueden clasificar en dos tipos basicos:
+* **Sensores Analógicos**: Son el tipo de sensores mas basicos que existen. Estos sensores son alimentados con voltaje (voltaje de alimentación) desde el dispositivo IoT y devolvuelven (mediante el uso de un **ADC**) a este para su lectura, un voltaje cuya variación depende de la variable medida.
+
+  ![potenciometro](potentiometer.png) 
+
+* **Sensores Digitales**: Los sensores digitales detectan cambios de voltaje que solo pueden tomar dos posibles valores (**alto** y **bajo**). El tipo mas simple de sensor de este tipo es un **boton** o **switch**, el cual es un sensor con dos estados **ON** y **OFF**.
+  
+
+  ![pulsador](button.png) 
+
+  Existen sensores digitales mas avanzados que tienen la capacidad de sensar variables analógicas gracias a que possen el hardware necesario para poder procesar la señal leida de modo tal, que pueden ser conectados directamente al dispositivo IoT. Un caso tipico de estos, consiste en los sensores de temperatura que vienen integrados con un ADC de modo que los valores analogos leidos son convertidos en señales digitales que se envian al dispositivo IoT como datos en forma serial.
+
+  ![serial](temperature-as-digital.png)
+
+  En este tipo de sensores, el envio de los datos se realiza comunmente por medio de un protocolo serial. La siguiente lista resalta algunos de los mas comunmente usados:
+
+  ![protocolos_lista](protocolos.png)
+
+  Dentro de los protocolos más comunmente usados para IoT se encuentran el: RS-232, I2C, el SPI y el One Wire, pero esos los veremos despues con mas detalle.
+
+#### **Tipos de sensores de acuerdo a la alimentación**
+
+Los sensores pueden clasificarse en función de las necesidades de alimentación o de energía:
+* **Sensor Activo**: Requiere una fuente de alimentación para su funcionamiento. Algunos ejemplos incluyen: IMUs, LiDAR (Light detection and ranging), CCDs.
+* **Sensor pasivo**: No necesitan ser alimentados para funcionar. Algunos ejemplos son: RFID tags, thermistors, y temperature dependant resistors.
+
+> **Para profundizar** <br>
+> Para conocer mas sobre la terminologia asociada a los sensores consulte el siguiente material sobre sensores ([link](https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/sensores/intro)) disponible en las notas de clase.
+
+### Actuadores
+
+Los actuadores realizand la tarea opuesta a los sensores conviertiendo una señal electrica proveniente del dispositivo IoT en una señal ambiental cuyo fin es interactuar con el mundo fisico. Algunos actuadores comunes incluyen:
+* **Led**: Estos emiten luz cuando son encendidos.
+Alatavoz: Este elemento emite sonido basado en la señal que recibe, desde un buzzer basico a un parlante de audio puede ser empleado en la reproducción de musica.
+* **Motor paso a paso**: Este convierte una señal en una rotación definida.
+* **Relay**: Son swiches que pueden ser encendidos o apagados por medio de una señal electrica. Estos permiten que pequeños voltajes provenientes de dispositivos IoT puedan manejar altos voltajes.
+* **Pantallas**: Son uno de los actuadores mas completos y muesntran información en un display multi.segmentos. Los displays pueden variar desde display LED sencillos a monitores de video de alta resolución.
+
+Al igual que los sensores los actuadores tambien se pueden clasificar de acuerdo a diferentes criterios, en nuestro caso solo nos limitaremos al caso en el cual la clasificación se hace dependiendo de la señal electrica manejada.
+
+#### **Tipos de actuadores de acuerdo a la señal electrica**
+
+Al igual que para el caso de los sensores, el tipo de señal electrica hace que estos se clasifiquen en:
+* **Actuadores analógicos**: Los actuadores analogicos toman una señal analoga y la convierten en alguna clase de interacción la cual esta basada en cambios del voltaje aplicado.
+  
+  ![actuador_analogo](actuador_analogo.png)
+
+  Es importante tener en cuenta que asi como los sensores, los dispositivos IoT de la actualidad trabajan con señales digitales y no analogas; de modo que, para enviar una señal analoga, el dispositivo IoT necesita un conversor analogo digital (ADC) el cual puede estar integrado en el dispositivo IoT o adaptado a una placa externa que se conecta al dispositivo. El ADC convertira los 0s y 1s del dispositivo IoT a un voltaje analogo que el actuador pueda usar.
+
+* **Actuadores por modulación PWM**: A diferencia del uso de **ADCs**, otra forma de conversion de señales digitales a señales analogas es por medio de la **modulación PWM** lo cual involucra enviar una tren de pulsos los caules actuan como si fueran una señal analogica cuya amplitud, depende del ancho de los pulsos del tren. Un ejemplo tipico del uso de PWM econsiste en el control de la velocidad de un motor. Para este caso a mayor ancho del pulso de la onda cuadrada, mayor velocidad en el motor.
+  
+  ![actuador_pwm](actuador_pwm.png)
+
+* **Actuadores digitales**: De modo similar a los sensores digitales, los actuadores digitales, tienen dos estados que son controlados por un voltaje **alto** y uno **bajo** o tienen un ADC que les permite convertir una señal analoga en una digital. 
+  
+  ![actuador_digital](actuador_digital.png)
+
+  Tal y como en el caso de los sensores, los actuadores digitales mas avanzados pueden involucrar protocolos de comunicación serial para la conexión con el sistem electrónico. 
+
+## 8. Arduino Framework
 
 Colocar información basica sobre el framework de arduino...
 
@@ -310,10 +394,12 @@ Colocar información basica sobre el framework de arduino...
 - [ ] 2. Sistemas de desarrollo
 - [ ] 3. Sensores y actuadores
 - [ ] 4. Trabajando con las placas de desarrollo a estudiar
-- [ ] https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/sensores/intro
+
 
 
 ## Referencias
 
 * https://how2electronics.com/10-essential-iot-starter-kits-to-kickstart-your-journey/
-* 
+* https://github.com/UdeA-IoT/actividad-4
+* https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/sensores/intro
+* https://gist.github.com/lyqht
