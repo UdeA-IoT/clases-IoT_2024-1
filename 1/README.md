@@ -3,7 +3,7 @@
 
 ## Objetivos
 
->* Repasar los componentes básicos de un sistema IoT}
+>* Repasar los componentes básicos de un sistema IoT
 >* Explorar los componentes básicos que conforman el concepto de cosa.
 >* Hacer las primeras pruebas con la placa de desarrollo ESP32
 >* Investigar sobre los sistemas de desarrollo disponibles en el laboratorio.
@@ -66,6 +66,7 @@ Para realizar labores de prototipado, se disponen de los elementos listados a co
 |Single-board Computer|<li> Raspberry Pi <li> BeagleBoard <li> Orange Pi <li> Intel Galileo |
 |Development boards|<li> Arduino UNO <li> ESP8266 <li> ESP32 <li>ARDUINO NANO 33 BLE Sense Lite|
 
+> **Para profundizar** <br>
 > Para conocer mas sobre estos elementos disponibles en el laboratorio consulte el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
 
 ### 3. Sensores y actuadores
@@ -83,6 +84,7 @@ Mediante los sensores y los actuadores es como la cosa interactua con el entorno
   
   ![sensores_ladzo](sensores_ladzo.png)
 
+> **Para profundizar** <br>
 > Para conocer mas sobre los sensores [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/inventario-lab)
 
 ### 4. Trabajando con las placas de desarrollo a estudiar
@@ -103,6 +105,7 @@ A continuación se muestra el diagrama de pines para el Arduino UNO y el ESP32.
 
   ![esp32_pinout](nodemcu-esp_32s-pines.jpg)
 
+> **Para profundizar** <br>
 > Para profundizar mas consulte la información relacionada con los sistemas de desarrollo anteriores en el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
 
 ### 5. Prototipado básico
@@ -111,17 +114,195 @@ Fritzing es una plataforma para plataforma permitira prototipar hardware en su c
 
 ![fritzing](Fritzing_breadboard_view.jpg)
 
+> **Importante** <br>
 > Consulte la sección **Prototipado básico usando fritzing** en el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion2)
 
-Poner un ejercicio por equipo de usar fritzing para...
+Antes de empezar, es necesario tener bien claro cuales son los requerimientos que debe cumplir el sistema electronico y proceder a determinar los componentes que haran parte del sistema en cuestión. 
 
-### 6. Arduino Framework
+Una vez hecho lo anterior, el siguiente paso cosiste en hacer un inventario de los componentes necesarios conocido como **Bill of Materials (BOM)** ([What is a Bill of Materials (BOM) in PCB Design?](https://www.seeedstudio.com/blog/2019/07/24/what-is-a-bill-of-materials-bom-in-pcb-design/)). La siguiente figura (tomada del siguiente [link](https://www.proto-electronics.com/blog/how-to-create-best-bom-for-pcb)) muestra un BOM tipico:
 
-Colocar información basica sobre el framework de arduino...
+![BOM](BOM_example.png)
+
+Con esto ya definido, es posible empezar el proceso de prototipado el cual, se puede resumir en los siguientes pasos:
+1. **Diseñar el circuito**: Este procedimiento implica el diseño del esquematico (para profundizar respecto al tema acceda al sitio [How to Read a Schematic](https://learn.sparkfun.com/tutorials/how-to-read-a-schematic/)) en el cual se especifique claramente la conexión de los componentes. La siguiente figura muestra algunos simbolos de uso común:
+   
+   ![esquematico](fig-esquematico.png)
+   
+   A la par que se va realizando el diseño del esquematico, se va construyendo el **BOM**, una plantilla sencilla para nuestro caso pude ser la siguiente:
+
+   |Item #|Cantidad|Referencia|Descripción|
+   |---|---|---|---|
+   |1||||
+   |2||||
+   |...||||
+
+2. **Realizar el montaje del circuito**: A partir del esquematico, se procede al montaje y prueba del circuito diseñado conectando los diferentes componentes en una protoboard (para mas información consulte [Breadboards for Beginners](https://learn.adafruit.com/breadboards-for-beginners)).
+   
+   ![montaje-bb](fig-montaje.png)
+
+3. **Diseñar el PCB del prototipo**: Una vez que el diseño es probado y se determina que funciona de acuerdo a las especificaciones, se procede a diseñar el circuito impreso del diseño. Para ello se pueden usar programas de diseño PCB como KiCad o Eagle.
+   
+   ![pcb](fig-pcb.png)
+
+> **Importante** <br>
+> El último paso esta fuera del alcance de este curso por lo que no se hará a paso.
+
+En la siguiente figura (tomada de [How to read a schematic](https://learn.sparkfun.com/tutorials/how-to-read-a-schematic) de Sparkfun) muestra algunos de los principales simbolos usados en esqumeticos:
+
+![simbolos-esquemtatico](simbolos_esquematicos.png)
+
+#### **Ejemplo**
+
+El siguiente ejemplo se resume el procedimiento anterior haciendo enfasis en los pasos 1 y 2. Para esto suponga que se desea diseñar un circuito que permita encender y apagar un del usando un interruptor.
+
+|Item #|Cantidad|Referencia|Descripción|
+|---|---|---|---|
+|1|1|LED1|Led rojo|
+|2|1|R1|Resistencia de $1k\Omega$|
+
+1. **Diseñar el circuito**: A continuación se muestra el esquematico:
+   
+   ![led_sch](esquematico-led.jpg)
+
+2. **Realizar el montaje**: Antes de montar el circuito en una protoboard, se usará Fritzing para esto:
+   
+   ![led_bb](montaje-bb.jpg)
+   
+   Es importante notar, que en la figura anterior, se mostraron dos posibles conexiones del mismo circuito, la idea es resaltar que para el mismo esquematico pueden existir diferentes montajes de modo que, mas alla del montaje que se haga, lo realmente importante es que las conexiones de los compotentes sea la correcta.
+   
+   Finalmente, se procede a realizar el montaje fisico tal y como se muestra en la siguiente figura:
+
+   ![led_fisico](montaje-fisico.png)
+
+Con el objetivo de afianzar el procedimiento anterior, lo invitamos a que desarrolle los siguientes dos ejercicios.
+
+#### **Ejercicio 1**
+
+A continuación se muestra un circuito que permite variar la intensidad de un led a traves de un potenciometro conectado a un arduino. La lista de componentes se muestra en el siguiente BOM:
+
+|Item #|Cantidad|Referencia|Descripción|
+|---|---|---|---|
+|1|1|LED1|Arduino Uno R3|
+|2|1|R1|Potenciometro de $10k\Omega$|
+|3|1|R2|Resistencia de $1k\Omega$|
+|4|1|D1|LED|
+
+El esquemático se muestra a continuación:
+
+![sch_ejecicio1](ejercicio1.png)
+
+Realizar las siguientes tareas:
+1. Realice el montaje en fritzing y guardelo como **variable_led_flash.fzz**. Luego, genere las imagenes asociadas al esquematico y al montaje.
+2. El programa que se descarga en el Arduino UNO, se muestra a continuació:
+   
+   ```c++
+   const int voltsInPin = A3;
+   const int ledPin = 9;
+
+   void setup() {
+     pinMode(ledPin, OUTPUT);
+   }
+   void loop() {
+     int rawReading = analogRead(voltsInPin);
+     int period = map(rawReading, 0, 1023, 100, 500);
+     digitalWrite(ledPin, HIGH);
+     delay(period);
+     digitalWrite(ledPin, LOW);
+     delay(period);
+   }
+   ```
+
+3. Empleando Tinkercad (https://tinkercad.com/), realice el montaje, escriba el código para simular y proceda a realizar la simulación. Luego, haga publico el link de simulación para compartir su trabajo con la comunidad.
+
+#### **Ejercicio 2**
+
+El siguiente sistema muestra un generador de tonos sencillo. La lista de componentes se muestra a continuación:
+
+|Item #|Cantidad|Referencia|Descripción|
+|---|---|---|---|
+|1|1|LED1|Arduino Uno R3|
+|2|1|R1|Potenciometro de $10k\Omega$|
+|3|1|R2|Resistencia de $1k\Omega$|
+|4|1|D1|LED|
+
+El esquemático se muestra a continuación:
+
+![sch_ejecicio1](ejercicio1.png)
+
+Realizar las siguientes tareas:
+1. Realice el montaje en fritzing y guardelo como **sounds.fzz**. Luego, genere las imagenes asociadas al esquematico y al montaje.
+2. El programa que se descarga en el Arduino UNO, se muestra a continuació:
+   
+   ```c++
+   const int sw1pin = 6;
+   const int sw2pin = 7;
+   const int soundPin = 8;
+
+   void setup() {
+     pinMode(sw1pin, INPUT_PULLUP);
+     pinMode(sw2pin, INPUT_PULLUP);
+     pinMode(soundPin, OUTPUT);
+   }
+   void loop() {
+     if (!digitalRead(sw1pin)) {
+       tone(soundPin, 220);
+     }
+     else if (!digitalRead(sw2pin)) {
+       tone(soundPin, 300);
+     }
+     else {
+       noTone(soundPin);
+     }
+   }
+   ```
+
+3. Empleando Tinkercad (https://tinkercad.com/), realice el montaje, escriba el código para simular y proceda a realizar la simulación. Luego, haga publico el link de simulación para compartir su trabajo con la comunidad.
+
+### 7. Tarjetas de expación y modulos
+
+El proceso de prototipado usando protoboard depende de la complejidad del circuito y de los componentes disponible y en el peor de los casos, puede ser sumamente completo (imagen tomada de **BREADBIN IS AN 8-BIT TTL CPU ON A BREADBOARD, IN A BREAD BIN** ([link](https://hackaday.com/2021/10/05/breadbin-is-an-8-bit-ttl-cpu-on-a-breadboard-in-a-bread-bin/))):
+
+![procesador](procesador_8bits.png)
+
+Afortunadamente, para ahorrar trabajo como este existen las **tarjetas de expación** o **shields** los cuales permiten conectar de manera externa componentes y modulos externos sin necesidad de usar la protoboard. Por ejemplo, la **Base Shield V2** ([link](https://wiki.seeedstudio.com/Base_Shield_V2/)):
+
+![base_shield](Base_Shield_v2-1.png)
+
+Por otro lado un **modulo externo**, consiste de uno o varios componentes de hardware con todas las conexiónes y elementos necesarios para realizar la conexión directa de los componentes a los puertos de una placa de desarrollo o una tarjeta de expansión, sin necesidad de hacer uso de hardware de acondicionamiento adicional. En resumenn, el uso de un modulo externo hace que la conexión de un componente pase a ser practicamente **plug & play** ahorrandonos el uso de protoboard y alambrado adicional. La siguiente figura muestra un ejemplo donde se usa hardware externo.
+
+![conexion_modulo](arduino_servo.png)
+
+En la sección 3, se mostraron algunos de los modulos **plug & play** disponibles en el aboratorio, estos se caracterizan por ser modulos de iniciación ya que la complejidad de los componentes no es mayor. Sin embargo existen modulos mas expecializados como GPS, transeptores, modulos inalambricos y sensores y actuadores de mayor presición y potencia disponibles. 
+
+> **Importante** <br>
+Usar modulos y targetas de expanción facilita el prototipado ahorrando la etapa 3 del proceso presentado en la sección 5.
+
+Existen una gran cantidad de fabricantes de modulos y tarjetas de expación, a continuación se listan algunos:
+
+|Fabricante|Link|
+|---|---|
+|Adafruit Industries|	https://www.adafruit.com/|
+|SparkFun Electronics|	https://www.sparkfun.com/|
+|dfrobot|	https://www.dfrobot.com/|
+|Seeeed Studio|	https://www.seeedstudio.com/|
+|Elegoo| https://www.elegoo.com/|
+|sunfounde|https://www.sunfounder.com/|
+|robotistan|https://www.robotistan.com/|
+|osoyoo|https://osoyoo.com/|
+|thingpulse|https://thingpulse.com/
+|keyestudio|https://www.keyestudio.com/|
+|Arduino|https://store-usa.arduino.cc/products/|
+
 
 ### 7. Sensores básicos
 
 Analogos y digitales y colocar algunos ejemplos...
+
+### 8. Arduino Framework
+
+Colocar información basica sobre el framework de arduino...
+
+
 
 ## Lista de avance
 
@@ -132,3 +313,7 @@ Analogos y digitales y colocar algunos ejemplos...
 - [ ] https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/sensores/intro
 
 
+## Referencias
+
+* https://how2electronics.com/10-essential-iot-starter-kits-to-kickstart-your-journey/
+* 
