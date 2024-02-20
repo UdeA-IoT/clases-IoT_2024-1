@@ -462,9 +462,31 @@ Reimplemente el sistema anterior empleando el ESP32 yusando los módulos descrit
   - [ ] Realice este proceso usando el Platformio (Siga los pasos mostrados en el ejemplo 2 de la sesión 4 [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion4c))
 
 
+## Recursos para ir mas lejos
+
+Explore los siguientes citios para que vaya teniendo una idea de lo que se puede hacer:
+* https://randomnerdtutorials.com/
+* https://www.adafruit.com/
+* https://www.sparkfun.com/
+* https://www.seeedstudio.com/
+* https://www.luisllamas.es/
+* https://www.hackster.io/
+* https://hackaday.com/
+* https://projecthub.arduino.cc/
+* https://makezine.com/
+* https://make.co/
+* https://es.ubidots.com/
+* https://www.wildernesslabs.co/
+
+
 ## Referencias
 
 * https://how2electronics.com/10-essential-iot-starter-kits-to-kickstart-your-journey/
 * https://github.com/UdeA-IoT/actividad-4
 * https://udea-iot.github.io/UdeA_IoT-page/docs/sensores-actuadores/sensores/intro
 * https://gist.github.com/lyqht
+* https://github.com/microsoft/IoT-For-Beginners
+* https://github.com/microsoft/ML-For-Beginners
+* https://github.com/microsoft/Web-Dev-For-Beginners
+* https://github.com/microsoft/ai-for-beginners
+* https://github.com/microsoft/Data-Science-For-Beginners
