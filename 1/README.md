@@ -185,7 +185,7 @@ A continuación se muestra un circuito que permite variar la intensidad de un le
 |---|---|---|---|
 |1|1|LED1|Arduino Uno R3|
 |2|1|R1|Potenciometro de $10k\Omega$|
-|3|1|R2|Resistencia de $1k\Omega$|
+|3|1|R2|Resistencia de $270\Omega$|
 |4|1|D1|LED|
 
 El esquemático se muestra a continuación:
@@ -222,13 +222,12 @@ El siguiente sistema muestra un generador de tonos sencillo. La lista de compone
 |Item #|Cantidad|Referencia|Descripción|
 |---|---|---|---|
 |1|1|LED1|Arduino Uno R3|
-|2|1|R1|Potenciometro de $10k\Omega$|
-|3|1|R2|Resistencia de $1k\Omega$|
-|4|1|D1|LED|
+|2|2|S1, S2|Pulsadores|
+|3|1|Sounder|Buzzer pasivo|
 
 El esquemático se muestra a continuación:
 
-![sch_ejecicio1](ejercicio1.png)
+![sch_ejecicio2](ejercicio2.png)
 
 Realizar las siguientes tareas:
 1. Realice el montaje en fritzing y guardelo como **sounds.fzz**. Luego, genere las imagenes asociadas al esquematico y al montaje.
@@ -418,15 +417,49 @@ Una vez se tiene claridad en esto, se procede a realizar los siguientes pasos co
 3. Mediante el IDE, compilar y descargar el programa en la placa de desarrollo.
 4. Probar que el sistema IoT funcione de acuerdo a los requisitos definidos en la etapa de analisis y diseño.
 
-A continuación se va a mostrar el procedimiento mediante algunos ejemplos.
+A continuación se va a mostrar el procedimiento anterior mediante algunos ejemplos.
 
-## Lista de avance
+### Ejemplo 1
 
-- [ ] 1. Ejemplo de un sistema IoT
-- [ ] 2. Sistemas de desarrollo
-- [ ] 3. Sensores y actuadores
-- [ ] 4. Trabajando con las placas de desarrollo a estudiar
+En el **ejercicio 1** se mostró un sistema de sistema de parpadeo manual usando el Arduino UNO:
 
+![ejercicio1](ejercicio1.png)
+
+El código originalmente implementado, se muestra a continuación:
+
+```C++
+const int voltsInPin = A3;
+const int ledPin = 9;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+void loop() {
+  int rawReading = analogRead(voltsInPin);
+  int period = map(rawReading, 0, 1023, 100, 500);
+  digitalWrite(ledPin, HIGH);
+  delay(period);
+  digitalWrite(ledPin, LOW);
+  delay(period);
+}
+```
+
+Reimplemente el sistema anterior empleando el ESP32 yusando los módulos descritos en la siguiente lista de materiales:
+
+|Item #|Cantidad|Referencia|Descripción|Información|Observaciones|
+|---|---|---|---|---|---|
+|1|1|LED1|ESP32|||
+|2|1|R1|Potenciometro de $10k\Omega$|Grove - Rotary Angle Sensor ([link](https://wiki.seeedstudio.com/Grove-Rotary_Angle_Sensor/))|Este modulo hace parte del Grove - Starter Kit v3 ([link](https://wiki.seeedstudio.com/Grove_Starter_Kit_v3/))|
+|3|1|R2|Resistencia de $1k\Omega$|Grove - Red LED ([link](https://wiki.seeedstudio.com/Grove-Red_LED/))|Este modulo hace parte del Grove - Starter Kit v3 ([link](https://wiki.seeedstudio.com/Grove_Starter_Kit_v3/))|
+
+**Actividades**:
+- [ ] Usando Fritzing realizar el esquemático y la conexión de los componentes.
+- [ ] Reescriba la parte del programa para hacer que este funcione para el ESP32.
+- [ ] Simule el sistema usando el [wokwi](https://wokwi.com/)
+- [ ] Si la simulación es correcta, realice la conexión fisica del sistema empleando los componentes de la tabla anterior.
+- [ ] Codifique, compile y descargue el programa en el ESP32 teniendo en cuenta que el resultado del montaje real coincide con el de la simulación.
+  - [ ] Realice este proceso usando el Arduino IDE (Ver la sección de ejemplos introductorios para el ESP32 siguiendo el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion3))
+  - [ ] Realice este proceso usando el Platformio (Siga los pasos mostrados en el ejemplo 2 de la sesión 4 [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion4c))
 
 
 ## Referencias
