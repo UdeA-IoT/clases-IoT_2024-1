@@ -15,7 +15,6 @@ En construcción...
 ## Trabajo de clase
 
 
-
 ## 1. Protocolos IoT comumente usados
 
 Para permitir la comunicación entre dispositivos de usan diferentes tipos de protocolos los cuales se pueden clasificar en dos grandes grupos:
@@ -27,7 +26,18 @@ Para permitir la comunicación entre dispositivos de usan diferentes tipos de pr
 
 ## 2. Comunicación entre sensores
 
-Protocolos alambrados...
+Actualmente disponemos de diferentes IC de memoria, sensores digitales, dispositivos de protección, fuentes de alimentación programables, potenciómetros digitales, IC de radiofrecuencia, etc. Todos necesitan comunicarse entre sí o con microcontroladores, microprocesadores, FPGA o ASIC. El propósito de estas comunicaciones entre dispositivos puede variar mucho. Puede ser que la programación extraiga información, proporcionando una señal para iniciar la ejecución de una acción.
+
+En la actualidad, se disponen de una gran cantidad de circuitos integrados IC como: memorias, sensores digitales, potenciometros digitales y circuitos de radio frecuencia entre otros. Todos estos dispositivos realizan diferentes operaciones que dependen de la información que es enviada hacia y desde otros componentes digitales similares. 
+
+Para permitir la comuniación de estos dispositivos entre si y con otros como los microcontrolaores se emplean difenrentes protocolos de comunicación los cuales se han definido por medio de estandares comunes con el fin de posibilitar la comunicación entre dispositivos sin depender del fabricante.
+
+
+En esta parte se mostrará, de manera resumida, algunos de los diferentes tipos de protocolos de comunicación serial haciendo enfasis en los que se listan a continuación:
+* RS-232
+* SPI
+* I2C
+* One Wire.
 
 ## RS-232
 
@@ -92,6 +102,8 @@ En construcción...
 
 
 ## SPI
+
+En construcción...
 
 ## I2C
 
