@@ -96,6 +96,24 @@ En el API de Arduino ([link](https://www.arduino.cc/reference/en/)) se encuentra
 > **Para profundizar** <br>
 > Puede consultar las notas de clase donde se encuentra un resumen de las funciones mas comunes del API de Arduino para la comunicación serial en el siguiente [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion4a)
 
+
+La siguiente tabla resume de manera breve algunas de las principales funciones de la libreria serial.
+
+|Función|Sintaxis|Descripción|
+|---|---|---|
+|`Serial.begin()`|`Serial.begin(speed)`|Configura la velocidad de transmisión serial (bits por segundo = baud).|
+|`Serial.print()` </br> `Serial.println()`|`Serial.print(data)`</br> `Serial.println(data)`|Imprime los datos del puerto serial en formato ASCII, cuando se usa el método `.println(data)` se pone un salto de linea al final.|
+|`Serial.available()`|`Serial.available()`|Devuelve la cantidad de bytes disponibles (pendientes por leer) en el puerto serial|
+|`Serial.read()`|`Serial.read()`|Lee un dato a traves del puerto serial. Cuando no hay datos devuelve `-1`|
+|`Serial.end()`|`Serial.end()`|Deshabilita la comunicación serial permitiendo que los pines `RX` y `TX` puedan ser usados como pines de entrada y salida `(I/O)`.|
+|`Serial.write()`|`Serial.write(val)` </br> `Serial.write(str)` </br> `Serial.write(buf, len)`|Escribe un dato (o una cadena de datos) en formato binario al puerto serial|
+|`Serial.flush()`|`Serial.flush()`|Espera hasta que la transmisión de los datos seriales que salen se complete|
+|`Serial.peek()`|`Serial.peek()`|Permite lectura del puerto serial sin remover datos del buffer interno. |
+|`Serial.SerialEvent()`|`Serial.SerialEvent()`|Funcion que se llama cuando hay datos disponibles en el puerto serial.|
+
+
+
+
 ### Ejemplos 
 
 En construcción...
@@ -198,6 +216,21 @@ En el link [Wire](https://www.arduino.cc/reference/en/language/functions/communi
 
 > **Para profundizar** <br>
 > El documento **Comunicación I2C con Arduino lo mejor de dos mundos** ([link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion4a](https://programarfacil.com/blog/arduino-blog/comunicacion-i2c-con-arduino/))) de [programarfacil.com](https://programarfacil.com/) explica muy bien no solo el protocolo I2C sino tambien las principales funciones de la libreria ```Wire```.
+
+Documentar usando: https://programarfacil.com/blog/arduino-blog/comunicacion-i2c-con-arduino/
+
+
+|Función|Sintaxis|Descripción|
+|---|---|---|
+|`Wire.begin()`|`Wire.begin()`</br>`Wire.begin(address)`|Join a master - Join a slave @ addr - address: the 7-bit slave address (optional); if not specified, join the bus as a controller device.|
+|`Wire.requestFrom()`|`Wire.requestFrom(address, count)`|This function is used by the controller device to request bytes from a peripheral device. - Esta función es utilizada por un dispositivo maestro para solicitar datos de un dispositivo esclavo. |
+|`Wire.beginTransmission()`|`Wire.beginTransmission(address)`|// Step 1|
+|`Wire.write()`|`Wire.write(value)` </br> `Wire.write(string)` </br> `Wire.write(data, length)`||
+|`Wire.read()`|`Wire.read()`||
+|`Wire.available()`|`Wire.available()`||
+|`Wire.endTransmission()`|`Wire.endTransmission()` </br> `Wire.endTransmission(stop)`||
+|`Wire.onReceive()`|`Wire.onReceive(handler)`||
+|`Wire.onRequest()`|`Wire.onRequest(handler)`||
 
 ## Referencias
 
