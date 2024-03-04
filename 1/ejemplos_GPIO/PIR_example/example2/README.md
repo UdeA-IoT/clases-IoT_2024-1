@@ -1,6 +1,4 @@
 
-
-
 **Simulación**: https://wokwi.com/projects/391364988125921281
 
 ```C++
