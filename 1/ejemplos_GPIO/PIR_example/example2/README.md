@@ -1,5 +1,38 @@
+# Ejemplo 2 - Sensor PIR y ESP32
 
-**Simulación**: https://wokwi.com/projects/391364988125921281
+## Descripción
+
+Activar un led cuando se detecte presencia a traves del uso de un sensor PIR. Ademas de la señal luminosa que empleada para indicar la presencia, el sistema contara con un buzzer para generar una alarma sonora. Esta alarma sonora se podrá desactivar o activar por medio de un pulsador.
+
+## Hardware
+
+La siguiente tabla muestra los componentes principales del circuito a montar:
+
+
+| Item # | Cantidad | Descripción    | Información |
+| ------ | -------- | -------------- | ----------- |
+| 1      | 1        | ESP32          | N/A         |
+| 2      | 1        | HC-SR501 PIR Sensor | Elegoo 37 SENSOR KIT|
+| 3      | 1        | Button Switch Module | Elegoo 37 SENSOR KIT|
+| 4      | 1        | Passive Buzzer Module | Elegoo 37 SENSOR KIT|
+
+### Esquematico
+
+<p align="center">
+  <img src="esp32_PIR2_sch.png">
+</p>
+
+### Conexión entre los componentes
+
+A continuación se muestra la conexión entre los componentes:
+
+<p align="center">
+  <img src="esp32_PIR2_bb.png">
+</p>
+
+## Software
+
+### Código
 
 ```C++
 /*
@@ -104,6 +137,16 @@ void loop() {
   lastButtonState = reading;
 }
 ```
+
+## Simulación
+
+### Wokwi - Simulación
+
+Para comprender el funcionamiento del programa, puede seguir el siguiente [link](https://wokwi.com/projects/391364988125921281)
+
+<p align="center">
+  <img src="ESP32_PIR_example2.png">
+</p>
 
 ## Referencias
 

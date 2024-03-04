@@ -1,10 +1,8 @@
+# Ejemplos usando un led RGB
 
-
-
-# Ejemplos led RGB
-
-
-
+A continuación se listan los ejemplos que emplean I/O básica:
+1. Ejemplo 1 - Parpadeo de un led RGB [[link]](example1/README.md)
+2. Ejemplo 2 - Cambio de color de un led RGB empleando un boton. [[link]](example2/README.md)
 
 ## Referencias
 

@@ -1,5 +1,8 @@
+# Ejemplos usando un sensor de ultrasonido
 
-
+A continuación se listan los ejemplos que emplean I/O básica:
+1. Ejemplo 1 - Medición de la distancia usando un sensore ultrasonico [[link]](example1/README.md)
+2. Ejemplo 2 - Medidor ultrasonico de distanca con alarma luminosa [[link]](example2/README.md)
 
 ## Referencias
 
