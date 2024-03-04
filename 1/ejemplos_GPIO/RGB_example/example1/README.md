@@ -1,21 +1,38 @@
+# Ejemplo 1 - Ejemplo usando led RGB y ESP32
+
+## Descripción
+
+Conectar al ESP32 un led RGB y ponerlo a alumbrar usando diferentes colores.
+
+> **Herramienta** </br> En el siguiente [link](https://www.rapidtables.com/web/color/RGB_Color.html) se encuentra una herramienta para realizar la combinación de colores primarios (RGB) y obtener cualquier color.
+
+## Hardware
+
+La siguiente tabla muestra los componentes principales del circuito a montar:
 
 
+| Item # | Cantidad | Descripción    | Información |
+| ------ | -------- | -------------- | ----------- |
+| 1      | 1        | ESP32          | N/A         |
+| 2      | 1        | SMD RGB Module | Elegoo 37 SENSOR KIT TUTORIAL|
 
+### Esquematico
 
+<p align="center">
+  <img src="ESP32-RGB_1_sch.png">
+</p>
 
+### Conexión entre los componentes
 
+A continuación se muestra la conexión entre los componentes:
 
+<p align="center">
+  <img src="ESP32-RGB_1_bb.png">
+</p>
 
+## Software
 
-
-
-
-Link: https://wokwi.com/projects/391210532094486529
-
-Parte del ejemplo base:
-
-https://docs.arduino.cc/built-in-examples/digital/Debounce/
-
+### Código
 
 ```C++
 int redPin = 19;
@@ -61,17 +78,16 @@ void setColor(int red, int green, int blue)
 }
 ```
 
-Poniendo un boton
+## Simulación
 
-Codigo OK: https://wokwi.com/projects/391211218645463041
-Codigo debug: https://wokwi.com/projects/391344633629636609
+### Wokwi - Simulación
 
+Para comprender el funcionamiento del programa, puede seguir el siguiente: 
+* **Board**: board-esp32-devkit-c-v4 ([link](https://wokwi.com/projects/391210532094486529))
 
-Poniendo un sensor de distancia o PIR
-
-
-
-
+<p align="center">
+  <img src="ESP32_RGB_1.png">
+</p>
 
 ## Referencias
 
