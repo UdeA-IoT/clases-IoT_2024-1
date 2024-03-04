@@ -462,16 +462,29 @@ Reimplemente el sistema anterior empleando el ESP32 yusando los módulos descrit
   - [ ] Realice este proceso usando el Platformio (Siga los pasos mostrados en el ejemplo 2 de la sesión 4 [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion4c))
 
 
-## Ejemplos de I/O básicos
+## I/O básico en el ESP32
 
 Inicialmente, vamos a explorar el API de Arduino para manejar entradas y salidas analogas y digitales básicas. Como punto de partida se tiene que tener claro los pines que se van a usar y, como estos son multifuncionales, tener claridad en las funciones que estos soportan. Para esto es necesario consultar en el datasheet de la placa el diagrama de pines y las funciones que estos pueden llevar a cabo. A continuación, por comodidad volvemos a mostrar el mapa de pines para la ESP32 disponible en el laboratorio:
 
 ![pines_ESP32](nodemcu_32s_pin.png)
 
-> **Para profundizar mas** </br> Para tener mas claridad al respecto, remitase a la pagina **ESP32 Pinout Reference: Which GPIO pins should you use?** ([link](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
-))
+La siguiente tabla muestra los pines de la placa clasificados según la funcionalidad:
+
+|Tipo |	Notación pines (placa)|
+|---|---|
+|Digital (Only input)|`P34 [GPIO34]`, `P35 [GPIO35]`, `SVP [GPIO36]`, `SVN [GPIO39]`|
+|Analog in|`SVP [GPIO36]`, `SVN [GPIO39]`, `P35 [GPIO 35]`, `P34 [GPIO34]`, `P32 [GPIO32]`, `P33 [GPIO 33]`, `P25 [GPIO25]`, `P26 [GPIO26]`, `P27 [GPIO27]`, `P14 [GPIO14]`, `P12 [GPIO12]`, `P13 [GPIO13]`, `P15 [GPIO15]`, `P2 [GPIO2]`, `P0 [GPIO0]`, `P4 [GPIO4]`|
+|PWM|`SVP [GPIO36]`, `SVN [GPIO39]`, `P35 [GPIO 35]`, `P34 [GPIO 34]`, `P32 [GPIO 32]`, `P33 [GPIO 33]`, `P25 [GPIO25]`, `P26 [GPIO26]`, `P27 [GPIO27]`, `P14 [GPIO14]`, `P12 [GPIO12]`, `P13 [GPIO13]`, `P15 [GPIO15]`, `P2 [GPIO2]`, `P0 [GPIO0]`, `P4 [GPIO4]`|
+|Serial (UART)|`Tx [GPI1]`, `Rx [GPI3]`, `D8 [TXD2]`, `D7 [RXD2]`|
+|I2C|`P22 [GPI22/SCL]`, `P21 [GPI21/SDA]`|
+|Digital SPI|`P23 [MOSI]`, `P19 [MISO]`, `P18 [SCK]`, `P5 [SS]`|
+|Flash SPI|`CLK [GPIO6/FLASHCLK]`, `SD0 [GPIO7/FLASHD0]`, `SD1 [GPIO7/FLASHD1]`, `CMD [GPIO7/FLASHCMD]`, `SD2 [GPIO9/FLASHD2]`, `SD3 [GPIO9/FLASHD3]`|
+|Capacitive touch|`P0 [GPIO4]/TOUCH1`, `P4 [GPIO0]/TOUCH0`, `P2 [GPIO2/TOUCH2]`, `P15 [GPIO15/TOUCH3]`, `P13 [GPIO13/TOUCH4]`, `P12 [GPIO12/TOUCH5]`, `P14 [GPIO14/TOUCH6]`, `P27 [GPIO7/TOUCH7]`|
 
 Una vez, se tiene claro que pines usar, el siguiente paso es determinar las funciones del API de Arduino ([link](https://www.arduino.cc/reference/en/)) que nos sirven para configurarlos y controlarlos. A continuación, se listan algunas de las más comunmente usadas.
+
+> **Para profundizar mas** </br> Para tener mas claridad al respecto, remitase a la pagina **ESP32 Pinout Reference: Which GPIO pins should you use?** ([link](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
+))
 
 ### Digital I/O
 
@@ -497,7 +510,78 @@ Una vez, se tiene claro que pines usar, el siguiente paso es determinar las func
 |[`millis()`](https://www.arduino.cc/reference/en/language/functions/time/millis/)|`time = millis()`|Devuelve la cantidad de milisegundos que pasan desde que el placa empieza la ejecución del programa.|
 |[`micros()`](https://www.arduino.cc/reference/en/language/functions/time/micros/)|`time = micros()`|Obtiene el numero de microsegundos que han pasado desde que el placa empieza la ejecución del programa.|
 
-En el siguiente [link](ejemplos_GPIO/README.md) se muestran algunos escenarios de uso donde se usan las funciones anteriormente descritas.
+## Descarga de aplicaciones en la placa base
+
+Antes de empezar, tenga a la mano, el diagrama de pines del NodeMCU (dada la importantci de esto, se lo volvemos a mostrar, disculpenos por cansones):
+
+![pines_ESP32](nodemcu_32s_pin.png)
+
+Luego, dependiendo de los requerimientos del sistema determine con claridad los pines a emplear y el funcionamiento que estos tendran. Luego, proceda a codificar el programa y realice las conexiones del montaje y, finalmente, proceda a compilar y a descargar el firmware en la placa usando el IDE apropiado.  En nuestro caso hablaremos de los dos mas empleados:
+* Arduino IDE
+* Platformio (extención de VS Code)
+
+### Arduino IDE
+
+Inicialmente, configure el IDE para que pueda soportar las tarjetas ESP32 siguiento los pasos descritor en la pagina **Installing the ESP32 Board in Arduino IDE (Windows, Mac OS X, Linux)** ([link](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)).
+
+Luego, lleve a cabo el procedimiento normal para descargar el firmware como sucede con cualquier placa de la marca Arduino. Para ello siga los siguientes pasos:
+1. Elija la placa de desarrollo ESP de la lista de placas disponibles en el IDE. En nuestro caso la placa **NodeMCU-32s** es la que elegimos (pues es la que está disponible en el laboratorio):
+   
+   ![seleccion-placa](seleccion_nodemcu-32s.png)
+
+2. Teniendo en cuenta el montaje realizado, codifique el programa para la plataforma elegida. Como el **ESP32** es compatible con Arduino la documentación se encuentra en **Arduino-ESP32** ([link](https://espressif-docs.readthedocs-hosted.com/projects/arduino-esp32/en/latest/))
+
+3. Descargue el programa en la placa:
+   
+   ![descarga-placa](placa-node_esp32.png)
+
+   Si todo esta bien, se deberia ver el mensaje **"Done uploading"** en el log que indique que el proceso fue exitoso.
+
+   > **Importante** </br> Tenga en cuenta que antes de empezar la descarga del programa debe presionar el botón boot de la placa del ESP32 y liberarlo cuando salga el mensaje **"Connecting..."** en el IDE de Arduino. (Para más información ver la sección Troubleshooting en el siguiente [link](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)) </br></br>![descarga-placa](error.png)
+
+
+### Platformio
+
+[Platformio](https://platformio.org/) es una extención del VS Code que permite programar y realizar pruebas sobre placas de desarrollo como la ESP32. A continuación, se describe el proceso para codificar y descargar el firmware usando este complemento.
+1. Iniciar Platformio
+   
+   ![platformio-1](platformio1.png)
+   
+   Si todo esta bien aparecera:
+
+   ![platformio-2](platformio2.png)
+
+2. Crear nuevo proyecto:
+   
+   ![platformio-3](platformio3.png)
+
+3. Seleccionar la plataforma y el lugar donde estara el proyecto.
+   
+   ![platformio-4](platformio4.png)
+   
+   Si todo esta bien el resultado sera como el siguiente:
+   
+   ![platformio-5](platformio5.png)
+
+4. Abrir el archivo **main.cpp** y editarlo:
+   
+   ![platformio-6](platformio6.png)
+
+5. Seleccionar el botón para subir el codigo a la tarjeta:
+   
+   ![platformio-7](platformio7.png)
+
+   Luego se procede a subir el codigo dando click en el botón de upload (**flecha**):
+
+   ![platformio-8](platformio8.png)
+
+6. Ensayar el funcionamiento. En la imagen mostrada a continuación se muestra la salida en el monitor serial cuando se emplea comunicación serial en la placa:
+   
+   ![platformio-9](platformio9.png)
+
+## Ejemplos introductorios
+
+En el siguiente [link](ejemplos_GPIO/README.md) se muestran algunos escenarios de uso donde se usan las funciones anteriormente descritas. El objetivo con estos es que se entrene en el procedimiento, previamente mostrado, para descargar firmware en la tarjeta.
 
 ## Recursos para ir mas lejos
 
