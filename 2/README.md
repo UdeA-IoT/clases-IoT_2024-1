@@ -41,7 +41,6 @@ En esta parte se mostrará, de manera resumida, algunos de los diferentes tipos 
 * I2C ([[link]](I2C/README.md))
 * SPI ([[link]](SPI/README.md))
 
-
 ## Referencias
 
 * https://learn.sparkfun.com/tutorials/serial-communication/all

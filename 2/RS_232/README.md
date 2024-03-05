@@ -46,6 +46,41 @@ Cuando dos dispositivos se conectan, se hace de tal manera que el pin de transmi
 
 ![conexion_serial](conexion_serial.png)
 
+## Aplicaciones de la comunicación serial
+
+Cualquiera de las placas disponibles en el laboratorio tiene al menos un puerto serial (UART o SUART). A traves de este puerto es posible:
+1. La comunicación entre entre dos placas a traves de la conexión cruzada entre los pines de transmisión (`TX`) y recepción (`RX`) de estas ([link](https://www.hackster.io/onedeadmatch/custom-uart-protocol-on-esp32-1e2fa4)).
+   
+   ![serial-caso1](oscup_mcu_mcu.jpg)
+
+2. La comunicación entre una placa y el computador mediante USB (haciendo uso de un adaptador USB a Serial) el cual suele venir integrado con las placas ([link](https://www.mathworks.com/help/supportpkg/arduinoio/ug/configure-setup-for-esp32-hardware.html)).
+   
+   ![serial-caso2](esp32_usb.png)
+
+## Escenarios de aplicación
+
+Cuando se hace uso del puerto serial tenemos principalmente dos escenarios de aplicacion:
+1. Debug de aplicaciones complejas.
+2. Comunicación y transmisición de diferentes tipos de información (comandos, estado, Valor de variables, etc.) según el tipo de aplicación que se use.
+
+### Escenario 1 - Debug de aplicaciones
+
+Una de las aplicaciones mas utilies del puerto serial es que facilita el debug de aplicaciones gracias a que por medio de este se pueden imprimir, en tiempo de ejecución, mensajes de log que sirven como verificar el correcto funcionamiento de la logica del programa al usar un programa como el monitor serial o cualquier programa similar.
+
+Es muy comun imprimir variables (que pueden indican el estado o valor de un sensor, mensajes de la aplicación, etc).
+
+El siguiente ejemplo ([link](https://wokwi.com/projects/358500354708861953)) muestra un caso de uso en el que se aplica este escenario:
+
+![serial-debug](esp32_debug-serial.png)
+
+### Escenario 2 - Comunicación con otras placas y con el PC
+
+Por medio de operaciones de lectura y escritura en el puerto serial, es posible transmitir información desde y hacia otro dispositivo de hardware que tenga interfaz serial (Otra placa, computador o hardware especifico).
+
+Para comprender esto en el siguiente directorio explicara paso a paso una aplicación mediante la cual se enviaran comandos por serial desde un el PC al ESP32 para una tarea sencilla como prender y apagar un led.
+
+![serial-debug](comunicacion_serial.png)
+
 ## API para comunicación serial de Arduino
 
 En el API de Arduino ([link](https://www.arduino.cc/reference/en/)) se encuentran las principales funciones, clases y estructuras de datos que se usan para hacer programas en Arduino. En el link [Serial](https://www.arduino.cc/reference/en/language/functions/communication/serial/) la sección **Communication** se acceden a la documentación de todas las funciones para establecer comunicación serial.
