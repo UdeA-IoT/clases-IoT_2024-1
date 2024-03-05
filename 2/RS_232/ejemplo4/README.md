@@ -1,4 +1,4 @@
-# Ejemplo de control de una ESP32 usando serial
+# Ejemplo 4 - Aplicación para control de una ESP32 usando serial
 
 El objetivo de esta sesión es explicar paso a paso como se construye una aplicación sencilla en la ESP que se comunique de manera serial con una aplicación que se esta ejecutando en un PC o RPi.
 
@@ -47,3 +47,20 @@ py -3 -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 ```
+
+## Desarrollo de la aplicación
+
+La implementación de la aplicación se realizará paso a paso. A continuación se resumen los pasos para realizar esto:
+
+1. **Implementación del firmware de la ESP32**: Inicialmente, según los requerimientos de la aplicación, lo primero que se debe hacer el codificar el programa que va a descargarse en el ESP32. Este paso se abordara en el siguiente **paso 1** ([link](paso1/README.md))
+   
+   ![salida](serial_output.png)
+
+2. **Implementación del software de la aplicación de escritorio**: Una vez verificado el correcto funcionamiento del Firmware del arduino, se procede al desarrollo de la aplicación de escritorio. En nuestro caso se desarrollo una aplicación de escritorio usando python. En lo que respecta a la aplicación de escritorio se realizaron dos variantes:
+   * **Desarrollo de la aplicación de consola**: Aplicación que pasa los comandos de control usando la terminal. Esta se tratará con detalle en el **paso 2** ([link](paso2/README.md))
+  
+   ![app_terminal](app_terminal.png)
+
+   * **Desarrollo de la aplicación con interfaz grafica**: Es la misma aplicación basica pero con interfaz grafica usando kivy (lo cual se vera luego) para hacer la interacción con el usuario mas agradable. Esta parte se tratará en el **paso 3** ([link](paso3/README.md))
+  
+   ![app_ui](app_ui.png)

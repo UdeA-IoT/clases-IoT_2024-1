@@ -36,10 +36,10 @@ En la actualidad, se disponen de una gran cantidad de circuitos integrados IC co
 Para permitir la comuniación de estos dispositivos entre si y con otros como los microcontrolaores se emplean difenrentes protocolos de comunicación los cuales se han definido por medio de estandares comunes con el fin de posibilitar la comunicación entre dispositivos sin depender del fabricante.
 
 En esta parte se mostrará, de manera resumida, algunos de los diferentes tipos de protocolos de comunicación serial haciendo enfasis en los que se listan a continuación:
-* RS-232 ([[link]](RS_232/README.md))
-* One Wire. ([[link]](one-wire/README.md))
-* I2C ([[link]](I2C/README.md))
-* SPI ([[link]](SPI/README.md))
+* RS-232 [[link]](RS_232/README.md)
+* One Wire. [[link]](one-wire/README.md)
+* I2C [[link]](I2C/README.md)
+* SPI [[link]](SPI/README.md)
 
 ## Referencias
 

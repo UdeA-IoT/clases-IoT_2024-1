@@ -107,4 +107,8 @@ La siguiente tabla resume de manera breve algunas de las principales funciones d
 
 ## Ejemplos 
 
-En construcción...
+A continuación se listan algunos de los ejemplos que ilustran la comunicación serial:
+1. Ejemplo 1 - Encendido y apagado de un LED usando comunicación serial [[link]](ejemplo1/README.md)
+2. Ejemplo 2 - Debug de una aplicación usando el monitor serial [[link]](ejemplo2/README.md)
+3. Ejemplo 3 - ESP32 y joystick [[link]](ejemplo3/README.md)
+4. Ejemplo 4 - Aplicación para control de una ESP32 usando serial [[link]](ejemplo4/README.md)
