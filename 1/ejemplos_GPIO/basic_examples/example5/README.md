@@ -33,7 +33,7 @@ A continuación se muestra la conexión entre los componentes:
 ### Código
 
 ```C++
-// Pines
+// ----- Pines ------
 //const int voltsInPin = 4;
 #define voltsInPin 4
 //const int ledPin = 2;
@@ -44,7 +44,7 @@ void setup() {
 }
 void loop() {
   int rawReading = analogRead(voltsInPin);
-  int period = map(rawReading, 0, 1023, 100, 500);
+  int period = map(rawReading, 0, 4095, 100, 500);
   digitalWrite(ledPin, HIGH);
   delay(period);
   digitalWrite(ledPin, LOW);
