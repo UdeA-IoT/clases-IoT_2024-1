@@ -136,7 +136,13 @@ Una vez hecho lo anterior, ya es posible empezar a trabajar en el archivo **main
 <p align="center">
 <img src="main_keypad.png">
 </p>
-    
+
+### Ejemplos
+
+En los siguientes ejemplos se muestran
+
+1. Instalación de la libreria **Keypad** para interactuar con un teclado matricial en el ESP32 usando el IDE de Arduino ([link](./librerias/keypad/arduino/README.md)).
+2. Instalación de la libreria **Keypad** para interactuar con un teclado matricial en el ESP32 usando el platformio ([link](./librerias/keypad/esp32/README.md)).
 
 ## 2. Protocolos IoT comumente usados
 
