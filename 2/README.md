@@ -18,9 +18,7 @@
 3. Comunicación usando I2C (En construcción...)
 4. Comunicación usando SPI (En construcción...)
 
-## Trabajo de clase
-
-## 1. 
+## 1. Librerias
 
 Cuando se adquiere una una impresora, el primer paso para que esta pueda usarse, consiste en obtener e instalar los drivers para que esta pueda funcionar correctamente en el sistema operativo. Normalmente, los fabricantes proporcionan los drivers de los dispositivos y por lo tanto, el procedimiento de poner en marcha el hardware consiste simplemente en ejecutar un simple instalador y listo; sin embargo, a veces se puede dar el caso en que el driver no existe y a menos que uno mismo lo cree, esta condenado a no poder usar dicho hardware y, generalmente, si esto ultimo pasa el resultado es que se quede con los crespos hechos a no ser que sea como Richard Stallman (Saint IGNUcius) (Ver: Cómo sería el mundo y la tecnología hoy en día sin el software libre y sin las ideas de Richard Stallman ([link](https://www.xataka.com/especiales/como-seria-mundo-tecnologia-hoy-dia-software-libre-ideas-richard-stallman)))
 
@@ -136,6 +134,9 @@ Una vez hecho lo anterior, ya es posible empezar a trabajar en el archivo **main
 <p align="center">
 <img src="main_keypad.png">
 </p>
+
+En el tutorial **Installing SimpleFOClibrary with PlatformIO
+** ([link](https://docs.simplefoc.com/library_platformio)) se muestra claramente un ejemplo completo del proceso de instalación.
 
 ### Ejemplos
 
