@@ -16,3 +16,11 @@ A continuación se detallan los ejemplos trabajados:
 
 1. https://makeabilitylab.github.io/physcomp/esp32/iot.html
 2. https://learn.sparkfun.com/tutorials/sparkfun-inventors-kit-experiment-guide---v41
+3. https://thingsboard.io/docs/devices-library/upesy-esp32-wroom-devkit/
+4. https://github.com/yellobyte/ESP32-DevBoards-Getting-Started
+5. https://www.upesy.com/products/upesy-esp32-wroom-devkit-board
+6. https://www.upesy.com/blogs/tutorials/esp32-pinout-reference-gpio-pins-ultimate-guide
+7. https://docs.platformio.org/en/latest/boards/espressif32/upesy_wroom.html
+8. https://mischianti.org/vcc-gnd-studio-yd-esp32-s3-devkitc-1-clone-high-resolution-pinout-and-specs/
+9. https://docs.sunfounder.com/projects/esp32-starter-kit/en/latest/components/component_esp32_extension.html
+10. https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html
