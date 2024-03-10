@@ -96,7 +96,7 @@ A continuación vamos a explorar de manera resumida como realizar el procedimien
    * Buscar la libreria por el nombre en el cuadro de texto del **Library manager**. Por ejemplo, si se quisiera instalar la libreria **Keypad** colocar su nombre en el cuadro de busqueda y luego seleccionar de la lista que aparece la libreria de interes:
   
    <p align="center">
-   <img src=" search_lib_keypad.png ">
+   <img src="search_lib_keypad.png ">
    </p>
 
    * Despues de seleccionar la libreria dar click en **Add to Project** para agregarla a un proyecto.
@@ -137,15 +137,6 @@ Una vez hecho lo anterior, ya es posible empezar a trabajar en el archivo **main
 <img src="main_keypad.png">
 </p>
     
-   
-
-
-
-
-#### Arduino
-
-
-1. 
 
 ## 2. Protocolos IoT comumente usados
 
