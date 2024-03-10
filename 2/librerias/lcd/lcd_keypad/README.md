@@ -1,3 +1,0 @@
-# En construcción
-
-Disculpe las molestias causadas...
