@@ -343,7 +343,7 @@ Como herramientas de apoyo para facilitar la generación de caracteres personali
 <img src="lcd-counter_bb.png">
 </p>   
 
-1. Alarma simple [[link]](./example2_lcd/README.md)
+2. Alarma simple [[link]](./example2_lcd/README.md)
 
 <p align = "center">
 <img src="esp32_keypad_lcd_bb.png">

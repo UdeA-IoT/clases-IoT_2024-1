@@ -144,11 +144,32 @@ Una vez hecho lo anterior, ya es posible empezar a trabajar en el archivo **main
 En los siguientes ejemplos se muestran como usar un teclado matricial:
 
 1. Instalación de la libreria **Keypad** para interactuar con un teclado matricial ([link](./librerias/keypad/example1_keypad/README.md)).
+   
+   <p align = "center">
+   <img src = "arduino_keypad_bb.png">
+   </p>
+
 2. Uso de un teclado matricial en un ESP32. Cada vez que se presiona una tecla, se produce un sonido para indicar el evento. ([link](./librerias/keypad/example2_keypad/README.md)).
+   
+   <p align = "center">
+   <img src = "esp32_keypad_bb.png">
+   </p>
 
 #### Display LCD
 
-ToDo...
+En los siguientes sencillos ejemplos se ilustra el uso del LCD:
+
+1. Contador simple usando el LCD ([link](./librerias/lcd/example1_lcd/README.md)).
+   
+   <p align = "center">
+   <img src = "lcd-counter_bb.png">
+   </p> 
+
+2. Sistema de acceso sencillo ([link](./librerias/lcd/example2_lcd/README.md)).
+   
+   <p align = "center">
+   <img src = "esp32_keypad_lcd_bb.png">
+   </p> 
 
 ## 2. Protocolos IoT comumente usados
 
