@@ -26,6 +26,12 @@ La siguiente tabla muestra los componentes principales del circuito a montar:
 
 ### Diagrama de conexión
 
+A continuación se muestra la conexión entre los componentes:
+
+![conexion](esp32_keypad2_bb.png)
+
+A continuación se detalla la conexión entre los componentes:
+
 #### Teclado matricial
 
 |ESP32|Teclado matricial 4x4|
