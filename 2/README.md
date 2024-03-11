@@ -171,6 +171,14 @@ En los siguientes sencillos ejemplos se ilustra el uso del LCD:
    <img src = "esp32_keypad_lcd_bb.png">
    </p> 
 
+#### Sensor de temperatura y humedad - DTH11
+
+1. Sensado de temperatura y humedad usando el DTH11 (en construcción...)
+   
+   <p align = "center">
+   <img src = "dh11-esp32_bb-1.jpg">
+   </p>
+
 ## 2. Protocolos IoT comumente usados
 
 Para permitir la comunicación entre dispositivos de usan diferentes tipos de protocolos los cuales se pueden clasificar en dos grandes grupos:
