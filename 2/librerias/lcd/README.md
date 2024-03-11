@@ -2,19 +2,21 @@
 
 ## Objetivos
 
-> * Objetivo 1.
-> * Objetivo 2.
-> * En construcción...
+> * Conocer las principales caracteristicas de un LCD de caracteres
+> * Conocer las señales de control y estado basicas.
+> * Conocer los modos de conexión.
+> * Analizar algunos ejemplos básicos.
 
 ## Antes de empezar
 
 Referencias principales:
 
-1. **Microcontroladores PIC - Programación en BASIC: componentes-adicionales** ([link](https://www.mikroe.com/ebooks/microcontroladores-pic-programacion-en-basic/componentes-adicionales))
-2. **Character LCDs - Adafruit** ([link](https://learn.adafruit.com/character-lcds))
-3. **Basic Character LCD Hookup Guide - Sparkfun** ([link](https://learn.sparkfun.com/tutorials/basic-character-lcd-hookup-guide/all))
-4. **Random Nerd Tutorials** ([link](https://randomnerdtutorials.com/projects-arduino/))
-5. **SparkFun Inventor's Kit Experiment Guide - v4.0 --> Project 4: Display** ([link](https://learn.sparkfun.com/tutorials/sparkfun-inventors-kit-experiment-guide---v40/project-4-display))
+1. **Liquid Crystal Displays (LCD) with Arduino** ([link](https://docs.arduino.cc/learn/electronics/lcd-displays/))
+2. **Microcontroladores PIC - Programación en BASIC: componentes-adicionales** ([link](https://www.mikroe.com/ebooks/microcontroladores-pic-programacion-en-basic/componentes-adicionales))
+3. **Character LCDs - Adafruit** ([link](https://learn.adafruit.com/character-lcds))
+4. **Basic Character LCD Hookup Guide - Sparkfun** ([link](https://learn.sparkfun.com/tutorials/basic-character-lcd-hookup-guide/all))
+5. **Random Nerd Tutorials** ([link](https://randomnerdtutorials.com/projects-arduino/))
+6. **SparkFun Inventor's Kit Experiment Guide - v4.0 --> Project 4: Display** ([link](https://learn.sparkfun.com/tutorials/sparkfun-inventors-kit-experiment-guide---v40/project-4-display))
 
 ## Sobre los displays LCD
 
@@ -332,3 +334,17 @@ Las funciones para el control del LCD de caracteres se encuentran en la libreria
 Como herramientas de apoyo para facilitar la generación de caracteres personalizados se recomienda el uso de las siguientes:
 1. Custom Character Generator for HD44780 LCD Modules ([link](http://omerk.github.io/lcdchargen/))
 2. HD44780 LCD User-Defined Graphics ([link](https://www.quinapalus.com/hd44780udg.html))
+
+## Ejemplos
+
+1. Contador con LCD [[link]](./example1_lcd/README.md)
+
+<p align = "center">
+<img src="lcd-counter_bb.png">
+</p>   
+
+1. Alarma simple [[link]](./example2_lcd/README.md)
+
+<p align = "center">
+<img src="esp32_keypad_lcd_bb.png">
+</p>   

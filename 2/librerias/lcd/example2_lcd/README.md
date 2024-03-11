@@ -1,7 +1,146 @@
-# En construcción
+# Contador LCD en ESP32
 
+## Resumen
 
-**Enlace**: https://wokwi.com/projects/392025013304457217
+Realizar un sistema acceso sencillo usando los siguientes elementos.
+* **ESP32**: Donde estara el firmware de control 
+* **Display LCD 16x2**: Para despliegue del ingreso de la clave y del estado de la puerta.
+* **Led**: Para simular la apertura y cerrado de la puerta.
+* **Buzzer**: Para hacer un beep cada vez que se presiona una tecla.
+
+El sistema por el momento, solo contará con una sola clave (1234 en el caso) de 4 digitos. Cuando el usuario ingresa los 4 digitos, automaticamente se validan los datos de entrada con la clave almacenada y se procede a abrir la puerta durante tres segundos si la clave fue correcta.
+
+## Hardware
+
+El archivo fritzing del proyecto es [esp32_keypad_lcd.fzz](esp32_keypad_lcd.fzz)
+
+### Componentes
+
+La siguiente tabla muestra los componentes principales del circuito a montar:
+
+|Componentes|Cantidad|Observaciones|
+|---|---|---|
+|ESP32|1|Placa ESP32 (Node-32s, YD-ESP32 o cualquier otra disponible en el laboratorio)|
+|Display LCD 16x2|1|Disponible en el Elegoo 37 SENSOR KIT (Para mas información sobre el LCD ver el siguiente [link](../README.md))|
+
+### Esquematico
+
+![esquematico](esp32_keypad_lcd_sch.png)
+
+### Diagrama de conexión
+
+A continuación se muestra la conexión entre los componentes:
+
+![conexion](esp32_keypad_lcd_bb.png)
+
+A continuación se detalla la conexión entre los componentes:
+
+#### Teclado matricial
+
+|ESP32|Teclado matricial 4x4|
+|---|---|
+|```GPIO13```|```R1 (ROW1)```|
+|```GPIO12```|```R2 (ROW2)```|
+|```GPIO14```|```R3 (ROW3)```|
+|```GPIO27```|```R4 (ROW4)```|
+|```GPIO26```|```C1 (COL1)```|
+|```GPIO25```|```C2 (COL2)```|
+|```GPIO33```|```C3 (COL3)```|
+|```GPIO32```|```C4 (COL4)```|
+
+#### Buzzer pasivo
+
+|ESP32|Buzzer pasivo|
+|---|---|
+|```GPIO5```|```S```|
+
+#### Led
+
+|ESP32|LED|
+|---|---|
+|```GPIO17```|Anodo del led|
+
+#### LCD 16x2
+
+|ESP32|LCD 16x2|Observaciones|
+|---|---|---|
+|```VIN 5V```|```VSS```|Pin de Alimentacion del LCD|
+|```GND```|```VDD```|Pin de Tierra del LCD|
+||```V0```|Pin para control del contraste del LCD|
+|```GPIO22```|```RS```||
+|```GND```|```R/W```||
+|```GPIO23```|```E```||
+||```DB0```||
+||```DB1```||
+||```DB2```||
+||```DB3```||
+|```GPIO4```|```DB4```||
+|```GPIO0```|```DB5```||
+|```GPIO2```|```DB6```||
+|```GPIO15```|```DB7```||
+|```VIN 5V```|```LED+```||
+|```GNG```|```LED-```||
+
+## Software
+
+El Proyecto generado por Platformio es **keypad_lcd** y se encuentra en el siguiente directorio [keypad_lcd](keypad_lcd/)
+
+### Placas
+
+Las placas para las cuales se configuró el proyecto se resume en la siguiente tabla:
+
+|Board|	Framework|
+|----|----|
+|	nodemcu-32s |	Arduino|
+|	upesy_wroom |	Arduino|
+
+### Librerias necesarias
+
+Las librerias empleadas se muestran a continuación:
+
+|#|	Libreria|	Observaciones|
+|---|---|---|
+|1|Keypad|Libreria para el manejo del teclado matricial ([documentación](https://github.com/Chris--A/Keypad))|
+|2|LiquidCrystal|LiquidCrystal de Arduino ([documentación](https://www.arduino.cc/reference/en/libraries/liquidcrystal/))|
+
+### Configuración en Platformio
+
+El archivo resultante al configurar el proyecto en el platformio con los parametros de las tablas anteriormente mostradas se muestra a continuación:
+    
+```ini
+; PlatformIO Project Configuration File
+;
+;   Build options: build flags, source filter
+;   Upload options: custom upload port, speed and extra flags
+;   Library options: dependencies, extra library storages
+;   Advanced options: extra scripting
+;
+; Please visit documentation for the other options and examples
+; https://docs.platformio.org/page/projectconf.html
+
+[env:upesy_wroom]
+platform = espressif32
+board = upesy_wroom
+framework = arduino
+lib_deps = chris--a/Keypad@^3.1.1
+           arduino-libraries/LiquidCrystal@^1.0.7
+
+[env:node32s]
+platform = espressif32
+board = node32s
+framework = arduino
+lib_deps = chris--a/Keypad@^3.1.1
+           arduino-libraries/LiquidCrystal@^1.0.7
+```
+
+### Código
+
+> **Recomendación**: <br>
+> Antes de analizar el código se recomienda que tenga a la mano la documentación de las funciones de las librerias empleadas:
+> * **Keypad library for Arduino** [[repo]](https://github.com/Chris--A/Keypad)
+> * **LiquidCrystal** [[doc]](https://www.arduino.cc/reference/en/libraries/liquidcrystal/)
+
+El código de la aplicación (**main.cpp**) se muestra a continuación:
 
 ```C++
 #include <Keypad.h>
@@ -147,3 +286,19 @@ void loop() {
   }
 }
 ```
+
+## Pruebas
+
+### Fisica
+
+La salida en el monitor serial de platformio se encuentra a continuación:
+
+<p align = "center">
+Falta probar en montaje real
+</p>
+
+### Simulación
+
+La simulación del programa descargado se encuentra en ([link](https://wokwi.com/projects/392025013304457217))
+
+![simulacion](simulacion_wokwi.png)
