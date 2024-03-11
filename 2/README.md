@@ -141,6 +141,10 @@ Una vez hecho lo anterior, ya es posible empezar a trabajar en el archivo **main
 
 #### Teclado matricial
 
+https://lastminuteengineers.com/arduino-keypad-tutorial/
+
+
+
 En los siguientes ejemplos se muestran como usar un teclado matricial:
 
 1. Instalación de la libreria **Keypad** para interactuar con un teclado matricial ([link](./librerias/keypad/example1_keypad/README.md)).
@@ -156,6 +160,9 @@ En los siguientes ejemplos se muestran como usar un teclado matricial:
    </p>
 
 #### Display LCD
+
+https://docs.arduino.cc/learn/electronics/lcd-displays/
+
 
 En los siguientes sencillos ejemplos se ilustra el uso del LCD:
 

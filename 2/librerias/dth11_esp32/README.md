@@ -6,6 +6,8 @@ Realizar que imprima la tempetatura y la humedad obtenida con un sensor DHT11 e 
 
 ## Hardware
 
+El archivo fritzing del proyecto es [dh11-esp32.fzz](dh11-esp32.fzz)
+
 ### Componentes
 
 La siguiente tabla muestra los componentes principales del circuito a montar:
@@ -33,9 +35,9 @@ La conexión entre el sensor DHT11 y el ESP32 se muestra en la siguiente tabla:
 
 |ESP32|DHT11|
 |---|---|
-|P2 (GPIO2) |S|
-|3.3V (VIN3.3V) |VSS|
-|GND (GND) |GND|
+|```P2 (GPIO2) ```|```S```|
+|```3.3V (VIN3.3V)``` |```Vin```|
+|```GND (GND)``` |```GND```|
 
 A continuación se muestra el diagrama de conexión:
 
@@ -43,25 +45,62 @@ A continuación se muestra el diagrama de conexión:
 
 ## Software
 
-Este ejemplo se probo en arduino, se pide que repita el procedimiento usando Platformio.
+El Proyecto generado por Platformio es **ESP32_DTH11-TH** y se encuentra en el siguiente directorio [ESP32_DTH11-TH](ESP32_DTH11-TH/)
 
-### Configuración
+### Placas
 
-#### Librerias empleadas
+Las placas para las cuales se configuró el proyecto se resume en la siguiente tabla:
 
-Se agregaron las siguientes librerias:
+|Board|	Framework|
+|----|----|
+|nodemcu-32s|	Arduino|
+|upesy_wroom|	Arduino|
 
-* **DHT**
-  
-  ![1](libreria_instalacion.png)
+### Librerias empleadas
 
-* **Adafruit Unified Sensor**
+Las librerias empleadas se muestran a continuación:
 
-  ![2](libreria_unified_instalacion.png)
 
-#### Programa
 
-El programa codificado se muestra a continuación:
+|#|	Libreria|	Observaciones|
+|---|---|---|
+|1|DHT|**DHT sensor library** [[repo]](https://github.com/adafruit/DHT-sensor-library)|
+|2|Adafruit Unified Sensor|**Adafruit Unified Sensor Driver** [[repo]](https://github.com/adafruit/Adafruit_Sensor)|
+
+
+### Archivo de configuración en Platformio
+
+```ini
+; PlatformIO Project Configuration File
+;
+;   Build options: build flags, source filter
+;   Upload options: custom upload port, speed and extra flags
+;   Library options: dependencies, extra library storages
+;   Advanced options: extra scripting
+;
+; Please visit documentation for the other options and examples
+; https://docs.platformio.org/page/projectconf.html
+
+[env:upesy_wroom]
+platform = espressif32
+board = upesy_wroom
+framework = arduino
+lib_deps = 
+	adafruit/DHT sensor library@^1.4.6
+	adafruit/Adafruit Unified Sensor@^1.1.14
+
+
+[env:node32s]
+platform = espressif32
+board = node32s
+framework = arduino
+lib_deps = 
+	adafruit/DHT sensor library@^1.4.6
+	adafruit/Adafruit Unified Sensor@^1.1.14
+```
+###  Código
+
+El código de la aplicación (**main.cpp**) se muestra a continuación:
 
 ```ino
 #include "DHT.h"
@@ -133,16 +172,20 @@ void loop() {
 }
 ```
 
-#### Test de la aplicación
+
+## Pruebas
+
+### Montaje fisico
 
 Cuando se prueba la aplicación, la salida tiene la siguiente forma:
 
-![3](esp32_dht11-serial.png)
+![3](serial_monitor_dht11.png)
 
+## Simulación
 
-## Otros recursos
+La simulación del programa descargado se encuentra en ([link](https://wokwi.com/projects/357776308749643777)). Es importante aclarar, que la simulación se realizo con el **DHT22** que es el componente disponible:
 
-La simulación del programa descargado se encuentra en ([link](https://wokwi.com/projects/357776308749643777))
+![4](simulacion_ESP32-DHT22.png)
 
 ## Referencias
 
