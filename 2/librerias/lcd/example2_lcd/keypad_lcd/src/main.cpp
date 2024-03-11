@@ -1,9 +1,4 @@
-# En construcción
-
-
-**Enlace**: https://wokwi.com/projects/392025013304457217
-
-```C++
+#include <Arduino.h>
 #include <Keypad.h>
 #include <LiquidCrystal.h>
 
@@ -146,4 +141,3 @@ void loop() {
     clave_completa = false;
   }
 }
-```
