@@ -1,4 +1,4 @@
-# Protocolos de comunicación entre los componentes de los nodos
+# Librerias y protocolos de comunicación entre los componentes de un nodo
 
 ## Objetivos
 
@@ -13,7 +13,7 @@
 
 ## Conceptos abordados
 
-1. Comunicación serial [link](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion4/)
+1. Comunicación serial [[link]](https://udea-iot.github.io/UdeA_IoT-page/docs/sesiones/percepcion/sesion4/)
 2. Comunicación usando One Wire (En construcción...)
 3. Comunicación usando I2C (En construcción...)
 4. Comunicación usando SPI (En construcción...)
@@ -135,15 +135,20 @@ Una vez hecho lo anterior, ya es posible empezar a trabajar en el archivo **main
 <img src="main_keypad.png">
 </p>
 
-En el tutorial **Installing SimpleFOClibrary with PlatformIO
-** ([link](https://docs.simplefoc.com/library_platformio)) se muestra claramente un ejemplo completo del proceso de instalación.
+> **Para profundizar** </br> En el tutorial **Installing SimpleFOClibrary with PlatformIO** ([link](https://docs.simplefoc.com/library_platformio)) se muestra claramente un ejemplo completo del proceso de instalación.
 
 ### Ejemplos
 
-En los siguientes ejemplos se muestran
+#### Teclado matricial
 
-1. Instalación de la libreria **Keypad** para interactuar con un teclado matricial en el ESP32 usando el IDE de Arduino ([link](./librerias/keypad/arduino/README.md)).
-2. Instalación de la libreria **Keypad** para interactuar con un teclado matricial en el ESP32 usando el platformio ([link](./librerias/keypad/esp32/README.md)).
+En los siguientes ejemplos se muestran como usar un teclado matricial:
+
+1. Instalación de la libreria **Keypad** para interactuar con un teclado matricial ([link](./librerias/keypad/example1_keypad/README.md)).
+2. Uso de un teclado matricial en un ESP32. Cada vez que se presiona una tecla, se produce un sonido para indicar el evento. ([link](./librerias/keypad/example2_keypad/README.md)).
+
+#### Display LCD
+
+ToDo...
 
 ## 2. Protocolos IoT comumente usados
 
