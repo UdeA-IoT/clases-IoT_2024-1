@@ -1,10 +1,17 @@
 # Conexión wifi para el ESP32
 
+## Objetivos
+
+> * Comprender el proceso de conexión de la placa de desarrollo basada en ESP32 a un red wifi.
+> * Entender los diferentes roles de conexión que puede tomar una ESP32.
+> * Enviar información de sensado usando servicios
+
 ## Antes de empezar
 
-* https://randomnerdtutorials.com/getting-started-with-esp32/
-* https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
-* https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
+Antes de empezar a trabajar recuerde el proceso de desarrollo para la plataforma ESP32 (visto en las clases anteriores). De tomas maneras, para que tenga información rapida a la mano, le recomendamos las siguientes paginas para que recuerde los primeros pasos con el ESP32:
+1. **Getting Started with the ESP32 Development Board** [[link]](https://randomnerdtutorials.com/getting-started-with-esp32/)
+2. **ESP32 Pinout Reference: Which GPIO pins should you use?** [[link]](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/)
+3. **Installing the ESP32 Board in Arduino IDE (Windows, Mac OS X, Linux)** [[link]](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)
 
 ## Arduino core for the ESP32
 
