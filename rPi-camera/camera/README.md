@@ -108,6 +108,6 @@ Y la imagen capturada sera almacenada en **test.jpg** tal y como se muestra a co
 Sin embargo, la instalación anterior hace que el comando `libcamera-still` deje de funcionar tal y como se muestra en la siguiente imagen:
 
 <p align = "center">
-  <img src = "test_lib.png"> 
+  <img src = "test_libcamera-still.png"> 
 </p> 
 

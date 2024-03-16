@@ -120,6 +120,20 @@ La imagen capturada (**test.jpg**) se muestra a continuación:
 
 Si desea usar el driver Raspicam y la versión de la imagen del sistema es la `Bullseye`, este se debe instalar y configurar separadamente tal y como se describe en la documentación ([link](https://www.waveshare.com/wiki/RPi_IR-CUT_Camera#Install_Raspicam_.28Optional.29)). El procedimiento se detalla en el siguiente [link](camera/README.md), sin embargo, si lleva esto a cabo el comando `libcamera-still` dejara de funcionar.  
 
+## Control de la camara
+
+Existen dos formas de controlar la camara:
+1. Usando linea de comandos
+2. Mediante un script de python
+
+## Control por linea de comandos
+
+Ver documentación en:
+* https://www.waveshare.com/wiki/RPi_IR-CUT_Camera#libcamera.2Flibcamera_User_Guide
+* https://www.waveshare.com/wiki/RPi_IR-CUT_Camera#raspicam_User_Guide
+* https://www.raspberrypi.com/documentation/accessories/camera.html
+* https://www.raspberrypi.com/documentation/accessories/camera.html
+
 
 
 
