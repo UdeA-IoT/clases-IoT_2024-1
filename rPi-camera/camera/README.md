@@ -111,3 +111,8 @@ Sin embargo, la instalación anterior hace que el comando `libcamera-still` deje
   <img src = "test_libcamera-still.png"> 
 </p> 
 
+## ToDo
+
+1. Referencia a los ejemplos usando linea de comandos.
+2. Referencia usando scripts de python.
+3. Referencia a la instalación usando opencv.
