@@ -1,6 +1,5 @@
 # Camara
 
-
 ## Referencias principales
 
 A continuación se muestran las referencias en las que se basa este documento:
@@ -9,7 +8,45 @@ A continuación se muestran las referencias en las que se basa este documento:
 
 ## Camaras disponibles
 
+Las cámaras disponibles en el laboratorio son marca [Waveshare](https://www.waveshare.com/).
+
 Interfaz CSI
+
+### Cámara Raspberry Pi 5MP visión Día y Noche
+
+**Referencia**: WS-12076 [[doc]](https://www.waveshare.com/wiki/RPi_IR-CUT_Camera)
+
+<p align = "center">
+<img src="RPi IR-CUT Camera_1.jpg">
+</p>
+
+#### Caracteristicas
+* Sensor OV5647 de 5 megapixeles
+* **Tamaño CCD**: 1/4inch
+* **Apertura (F)**: 1.8
+* **Focal Length**: 3.6mm (ajustable)
+* **Ángulo de visión**: 75.7 grados
+* **Resolución más alta**: 1080p
+* **Dimensiones**: 31mm x 32mm
+
+### Cámara Rpi (H) Lente ojo de pez + visión nocturna
+
+**Referencia**: WS-10703 [[doc]](https://www.waveshare.com/wiki/RPi_Camera_(H))
+
+<p align = "center">
+<img src="WS-10703.jpg">
+</p>
+
+#### Caracteristicas
+
+* Soporta todas las versiones de Raspberry Pi
+* Con LED infrarrojo, soporta visión nocturna
+* Sensor OV5647 de 5 Megapixeles
+* **Tamaño CCD**: 1/4”
+* **Apertura (F)**: 2.35
+* **Longitud focal**: ajustable
+* **Campo de visión**: 160 grados
+* **Mejor resolución del sensor**: 1080p
 
 ## Primeros pasos
 
