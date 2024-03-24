@@ -19,6 +19,7 @@ scp -r tigarto@192.168.1.31:/home/tigarto/Documents/open_cv .
 pip install --upgrade Pillow
 pip install opencv-python
 pip3 install matplotlib
+pip3 install scipy
 ```
 
 ```

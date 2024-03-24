@@ -3,6 +3,34 @@
 
 En construcción...
 
+* OpenCV is a simple and powerful programming framework for computer vision. It is preferred by both novices and experts in the field of computer vision.
+* OpenCV (also known as Open Source Computer Vision) is an open source library
+for computer vision and machine learning. It has many functionalities for image
+processing and computer vision. It is a cross-platform library, and it works with many
+programming languages and OSes. It has a large collection of computer vision and
+machine learning-related functions. It also has several Graphical User Interface (GUI)
+and event handling features.
+* It runs on a variety of OSes, including Windows, Android,
+Linux, macOS, and other Unix-like OSes. In this book, we will write computer
+vision-related programs with OpenCV and Python 3.
+* As we will be writing computer vision programs with Raspberry Pi as the platform, we
+will study single-board computers and Raspberry Pi in detail. We will learn how to set up
+the Raspbian OS on various models of a Raspberry Pi single-board computer.
+
+
+### Image datasets
+
+We will need sample images for our computer vision programs with Python and OpenCV.
+We can find a lot of images online. However, many of those images are under copyright.
+Most computer vision researchers and professionals use standard image datasets. We
+prefer to use the following image datasets all the time:
+* http://sipi.usc.edu/database/
+* https://www.imageprocessingplace.com/root_files_V3/image_databases.htm
+* https://en.home.cvlab.cs.tsukuba.ac.jp/
+* 
+
+
+
 ## Instalación
 
 
