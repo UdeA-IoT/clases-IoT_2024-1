@@ -332,3 +332,10 @@ sudo python3 setup.py install
 https://github.com/OmalPerera/Human-detection-system-with-raspberry-Pi/tree/master
 
 https://www.instructables.com/Human-Position-Recognition-With-Camera-and-Raspber/
+
+El proximo ejemplo a probar se muestra a continuación:
+* https://github.com/kipr/opencv/tree/master/data
+* https://github.com/simonmonk/raspberrypi_cookbook_ed4
+* https://github.com/simonmonk/raspberrypi_cookbook_ed4/blob/main/python/ch_08_detect_motion.py
+* https://github.com/simonmonk/raspberrypi_cookbook_ed4/blob/main/python/ch_08_faces.py
+* https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Object_Detection_Face_Detection_Haar_Cascade_Classifiers.php
