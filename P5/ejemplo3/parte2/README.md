@@ -24,6 +24,7 @@ Los endpoints se muestran a continuación:
 
 |HTTP method | API endpoint |Descrición|
 |---|---|---|
+|```GET``` | ```/``` |	Muestra el estado de la aplicación |
 |```GET``` | ```/ports``` |	Obtiene una lista de puertos |
 |```GET``` | ```/connect/<port_id>``` |	Conecta la aplicación al puerto serial elegido |
 |```GET``` | ```/disconnect``` | Desconecta la aplicación del puerto serial |
@@ -165,4 +166,3 @@ El resultado se usar las herramientas de FastAPI para las pruebas se muestra a c
 6. https://realpython.com/flask-connexion-rest-api-part-2/
 7. https://realpython.com/flask-connexion-rest-api-part-3/
 8. https://realpython.com/courses/python-rest-apis-with-fastapi/
-
