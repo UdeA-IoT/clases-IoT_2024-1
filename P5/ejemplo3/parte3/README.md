@@ -189,17 +189,39 @@ Los End points implementados se muestran a continuación:
 |```GET``` | ```/led_change``` | Cambia el estado del LED (ON/OFF) una vez la aplicación se ha conectado |
 
 
-## Enlaces
+## Probando la aplicación
 
+### Arranque del servidor
 
-## Referencias
+Inicialmente nos ubicamos en el directorio raiz de la aplicación (**web_app** en nuestro caso):
 
-
-* 
-
-Test:
-
+```
 cd web_app
+```
+
+Luego se ejecutamos el script **server.py**, usando en este caso el comando python:
+
+```
+python3 server.py
+```
+
+La siguiente imagen muestra el servidor en acción:
+
+<p align = "center">
+<img src = "server_terminal_output.png">
+</p>
+
+Si se pone la URL `127.0.0.1:8000` el resultado se muestra a continuación:
+
+<p align = "center">
+<img src = "browser_app0.png">
+</p>
+
+Con esto sabemos que el servidor esta arriba y listo para recibir peticiones.
+
+### Interactuando con la aplicación
+
+En construcción...
 
 ## Referencias
 
