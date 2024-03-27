@@ -3,7 +3,7 @@
 # Sesiones
 
 
-A lo largo del curso se van a emplear algunas herramientas. Es bueno que se familiarice con estas de modo que en el siguiente [link]() se muestra algo sobre esta. 
+A lo largo del curso se van a emplear algunas herramientas. Es bueno que se familiarice con estas de modo que en el siguiente [link](herramientas/README.md) se muestra algo sobre esta. 
 
 ## Capa de percepción
 
