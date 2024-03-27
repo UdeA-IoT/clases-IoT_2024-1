@@ -2,6 +2,9 @@
 
 # Sesiones
 
+
+A lo largo del curso se van a emplear algunas herramientas. Es bueno que se familiarice con estas de modo que en el siguiente [link]() se muestra algo sobre esta. 
+
 ## Capa de percepción
 
 - [x]  **Sesión 1**: Componentes basicos de un Sistema IoT [[link]](P1/README.md)

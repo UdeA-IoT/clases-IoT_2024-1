@@ -113,3 +113,4 @@ A continuación se listan algunos de los ejemplos que ilustran la comunicación 
 3. Ejemplo 3 - ESP32 y joystick [[link]](ejemplo3/README.md)
 4. Ejemplo 4 - Aplicación para control de una ESP32 usando serial [[link]](ejemplo4/README.md)
 5. Ejemplo 5 - Aplicación de escritorio que recibe los datos sensados por un ESP32 mediante comunicación serial [[link]](ejemplo5/README.md)
+6. Ejemplo 6 - Comunicación serial usando NodeRed [[link]](ejemplo6/README.md)
