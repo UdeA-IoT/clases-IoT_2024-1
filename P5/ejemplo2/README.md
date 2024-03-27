@@ -1,238 +1,526 @@
-# Ejemplo
+# Ejemplo 2
 
-Explorar la plataforma https://dweet.io/ enviando a esta un valor analogico.
+Realizar una implementación sencilla de una alarma la cual tiene la siguiente forma:
 
-Es importante tener en cuenta la siguiente información sobre obtenida de la documentación: 
+![](mqtt-ejemplo2.png)
 
-> ADC2 pins cannot be used when Wi-Fi is used. So, if you’re using Wi-Fi and you’re having trouble getting the value from an ADC2 GPIO, you may consider using an ADC1 GPIO instead, that should solve your problem.
+La siguiente figura:
 
-Segun lo anterior, usar el puerto GPIO15 que es el asociado al ADC2 es un problema (agradecimiento [@DanielJaramillo94](https://github.com/DanielJaramillo94) encontro la solución). Teniendo en cuenta lo anterior, la recomendación es usar otro puerto que no sea ADC2, como el 34 por ejemplo, lo cual permitió solucionar el error.
+|Thing|Observaciones|
+|---|---|
+|**```thing-001```**|Cosa conectada a un sensor PIR para detectar presencia. Cuando la presencia es detectada envia un comando por MQTT para indicar la presencia a una alarma que se encuentra en otro lugar|
+|**```thing-002```**|Cosa conectada a un buzzer, esta implementa una alarma sonora que indica la presencia de una persona al recibir un comando desde la cosa que esta conectada al sensor PIR|
 
-## Hardware
+Tal y como se muestra en la figura, el broker se encuentra ejecutandose en un computador el cual se encuentra en la misma red local donde se conectan las cosas.
 
-### Componentes
+## Implentación de las cosas
 
-Los componentes necesarios para implementar este ejemplo son:
+### Red MQTT
 
-|#|	Elemento|	Cantidad|
-|---|---|---|
-|1|	ESP32|	1|
-|2|	Potenciometro (Grove - Rotary Angle Sensor [[link]](https://wiki.seeedstudio.com/Grove-Rotary_Angle_Sensor/))|	1|
+Para este caso, el **topic tree** a implementar es el siguiente:
 
-### Esquematico
+![topic_tree](topic_tree-ejemplo2.png)
 
-El esquematico de este sistema se muestra a continuación:
+### Thing 1 - ESP-PIR 
 
-<p aling = "center">
-<img src = "sensor_analogo_sch.png">
-</p>
-
-### Conexiones
-
-El diagrama de conexión se muestra a continuación:
-
-<p aling = "center">
-<img src = "sensor_analogo_bb.png">
-</p>
-
-
-> **Archivo Fritzing** <br>
-> El archivo Fritzing sensor_analogo.fzz del ejemplo se puede descargar del siguiente [link](sensor_analogo.fzz)
-
-
-## Software
-
-### Software parte 1
-
-Este programa realiza las siguientes tareas:
-* Lee el valor analogo del potenciometro.
-* Envia el valor leido al PC mediante el puerto serial.
-
-
-```cpp
-const int analogInPin = 3;  //  GPIO3
-int sensorValue = 0;         // Value read from the pot
-
-void setup() {
-  // Start Serial  
-  Serial.begin(115200);    
-}
-
-void loop() {
-  // Read the analog in value
-  sensorValue  = analogRead(analogInPin);
-  
-  // Display data  
-  Serial.print("Sensor:  ");
-  Serial.println(sensorValue);
+1. **Hardware**:
    
-  // Wait a few seconds between measurements.
-  delay(2000);
-}
+   * **Lista de componentes**:
+   
+     |#|Elemento|Cantidad|
+     |--|--|--|
+     |1|ESP32|1|
+     |2|HC-SR501 PIR MOTION SENSOR (kit Elegoo)|1|
+
+   * **Esquematico**:
+
+     ![ESP32-sch](ESP32-PIR_sch.png)
+
+   * **Conexión**: Ojo, en el kit elegoo los pines **Vcc** y el **GND** son los opuestos a los mostrados en la siguiente figura:
+     
+     ![ESP32-bb](ESP32-PIR_bb.png)
+
+2. **Librerias**: 
+   
+   |#|Libreria|Observaciones|
+   |---|---|---|
+   |1|PubSubClient|Libreria que implementa el protocolo MQTT|
+   |2|ArduinoJsON ([link](https://arduinojson.org/))|Libreria para manejar información en formato JSON|
+
+3. **Parametros WiFi**:
+   
+   |Parametro|Valor|
+   |---|---|
+   |SSID|```"IoT"```|
+   |PASSWORD|```"1245678h"```|
+
+4. **Parametros MQTT**: 
+   
+   |Parametro|Valor|
+   |---|---|
+   |BROKER|```"192.168.43.55"```|
+   |ID|```"thing-001"```|
+   
+5. **Topicos**:
+   
+   |#|Topico|Mensaje|Descripción|Rol (S/P)|
+   |---|---|---|---|---|
+   |1|```store/sensor/pir```|```{"alarm":cmd}```|```cmd``` corresponde un valor entero que indica presencia (```1```) o ausencia (```0```) de personas.|```P```|
+   
+
+6. **Código**:
+
+**Archivo de configuración**: platformio.ini
+
+```ini
+[env:nodemcu-32s]
+platform = espressif32
+board = nodemcu-32s
+framework = arduino
+lib_deps = 
+	bblanchon/ArduinoJson@^6.21.3
+	knolleary/PubSubClient@^2.8
 ```
 
-### Software parte 2
+**Header**: config.h
 
-Este programa es una mejora del anterior que realiza las siguientes tareas:
-* Se conecta a una red local Wifi.
-* Muestra un log para conocer el estado de la conexión y algunos parametros asociados a la red.
-* Lee el valor analogo del potenciometro.
-* Envia el valor leido a la plataforma [dweet.io]([https://dweet.io/]) y al monitor serial mediante el puerto serial.
+```h
+#pragma once
 
+#include <string>
+
+using namespace std;
+
+// ESP32 I/O config
+
+// Alarm
+#define LIGHT_PIN 2 
+// PIR
+#define PIR_MOTION_SENSOR 5
+
+// WiFi credentials
+const char *SSID = "IoT";
+const char *PASSWORD = "1245678h";
+
+// MQTT settings
+const string ID = "thing-001";
+
+const string BROKER = "192.168.43.55";
+const string CLIENT_NAME = ID + "ESP32-PIR";
+
+const string TOPIC = "store/sensor/pir";
+```
+
+**Archivo main**: main.cpp
 
 ```cpp
+#include <Arduino.h>
 #include <WiFi.h>
-#include <WiFiClient.h>
+#include <ArduinoJson.h>
+#include <PubSubClient.h>
 
-// WiFi parameters
-const char* ssid = "ssid";
-const char* password = "password";
+#include "config.h"
 
-const int analogInPin = 15; // GPIO15
-int sensorValue = 0;        // Value read from the pot
+const unsigned MOV_TIMER = 1000;  // 1000 ms
 
-String thing_name = "node001";
+WiFiClient espClient;
+PubSubClient client(espClient); // Setup MQTT client
 
-// Host
-const char* host = "dweet.io";
+int motion_detected = LOW; 
 
-void setup() {
-  // Start Serial
-  Serial.begin(115200);
-  delay(10);  
+// Timer
 
-  // We start by connecting to a WiFi network
-  Serial.println();
-  Serial.println();
+hw_timer_t * timer = NULL;       // H/W timer 
+
+volatile bool event_timer = false; // Interrupt counter
+
+void ARDUINO_ISR_ATTR onTimer(){
+  event_timer = true; // Event timer: bandera 1 s 
+}
+
+void setup_timer() {
+  timer = timerBegin (0    /* timer 0*/, 
+                     80,   /* Preescaler: 80 */
+                     true  /* Counting: UP (true)*/ 
+                    );
+  timerAttachInterrupt(timer, &onTimer, true);
+
+  timerAlarmWrite(timer, 
+                  MOV_TIMER*1000, /* Irq cada 1000*1000ms = 1 s */
+                  true            /* Repeat the alarm (true) */
+                 );
+  timerAlarmEnable(timer);
+}
+
+// --- ESP32
+
+void setup_ports() {
+  pinMode(LIGHT_PIN, OUTPUT); 
+  pinMode(PIR_MOTION_SENSOR, INPUT); 
+}
+
+// ---- Wifi
+
+void connectWiFi() {
   Serial.print("Connecting to ");
-  Serial.println(ssid);
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
+  Serial.print(SSID);
+  while (WiFi.status() != WL_CONNECTED) {   
     Serial.print(".");
+    WiFi.begin(SSID, PASSWORD, 6);
+    delay(500);
   }
-
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
+  Serial.println();
+  Serial.print(ID.c_str());
+  Serial.println(" connected!");
+  Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
 }
 
-void loop() {
-  Serial.print("Connecting to ");
-  Serial.println(host);
-
-  // Use WiFiClient class to create TCP connections
-  WiFiClient client;
-  const int httpPort = 80;
-  if (!client.connect(host, httpPort)) {
-    Serial.println("connection failed");
-    return;
-  }
-
-  // Read the analog in value
-  sensorValue  = analogRead(analogInPin);
+// ---- MQTT
 
 
-  // We now create a URI for the request
-  String url = "/dweet/for/" + thing_name + "?value=" + String(sensorValue);
-
-  // Send request
-  Serial.print("Requesting URL: ");
-  Serial.println(url);
-  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-               "Host: " + host + "\r\n" +
-               "Connection: close\r\n\r\n");
-
-  unsigned long timeout = millis();
-  while (client.available() == 0) {
-    if (millis() - timeout > 1000) {
-      Serial.println(">>> Client Timeout !");
-      client.stop();
-      return;
+void reconnectMQTTClient() {
+  while (!client.connected()) {
+    Serial.println("Attempting MQTT connection...");
+    if (client.connect(CLIENT_NAME.c_str())) {
+      Serial.print("connected to Broker: ");
+      Serial.println(BROKER.c_str());
+      // Topic(s) subscription
+      client.subscribe(TOPIC.c_str());
+    }
+    else {
+      Serial.print("Retying in 5 seconds - failed, rc=");
+      Serial.println(client.state());
+      delay(5000);
     }
   }
-  
-  // Read all the lines from the answer
-  while(client.available()){
-    String line = client.readStringUntil('\r');
-    Serial.print(line);
+}
+
+void createMQTTClient() {
+  client.setServer(BROKER.c_str(), 1883);
+  reconnectMQTTClient();
+}
+
+void setup() {
+  // Setup ports
+  setup_ports();
+  // Serial setup
+  Serial.begin(9600);
+  while (!Serial)
+    ; // Wait for Serial to be ready
+  delay(1000);
+  connectWiFi();
+  createMQTTClient();
+  setup_timer();
+}
+
+void loop() {
+  reconnectMQTTClient();
+  client.loop();
+  if (event_timer) {
+    event_timer = false; // Reconocimiento de la irq (evento)
+    motion_detected = digitalRead(PIR_MOTION_SENSOR);
+
+    digitalWrite(LIGHT_PIN,motion_detected);   
+    Serial.println("Hi, people is coming");
+    DynamicJsonDocument doc(1024);
+    doc["alarm"] = motion_detected;
+    
+    string telemetry;
+    serializeJson(doc, telemetry);
+    Serial.print("Sending telemetry ");
+    Serial.println(telemetry.c_str());
+    client.publish(TOPIC.c_str(), telemetry.c_str());
   }
-
-  // Close connecting
-  Serial.println();
-  Serial.println("closing connection");
-
+  delay(100);  
 }
 ```
 
-> **Importante** <br>
-> Note del codigo que el nombre de la cosa en este caso es: ```node001```
+#### Debug de la Thing 1 - ESP-PIR 
 
-### Test
+La siguiente figura muestra el debug realizado para verificar que la **cosa** funciona bien:
 
-Vaya a [https://dweet.io/](https://dweet.io/) y explore el API, para ello siga el link https://dweet.io/play/
+![debug_pir](mqtt-ejemplo2-debug_pir.png)
 
-![api_dweet](API_dweet.png)
+La salida del monitor serial para ESP32 se muestra a continuación:
+
+![serial_pir](ejemplo_pir_serial_output.png)
+
+La siguiente tabla resume los comandos empleados para realizar el debug de esta cosa:
+
+|Acción|Comando mosquito|
+|---|---|
+|Observación del comando enviado desde el ESP32|```mosquitto_sub -t store/sensor/pir```|
+
+La salida del anterior comando, varia según se detecte o no la presencia:
+
+![mosquitto_debud_pir](mqtt_ejemplo2_debug_pir.png)
+
+La siguiente figura muestra el debug el ESP conectado al pir si se hubiera usado el MQTT explorer:
+
+![debug-pir_MQTT-explore](mqtt_ejemplo2_debug_pir-ESP-explorer.png)
+
+### Thing 2 - ESP-ALARM
+
+1. **Hardware**:
+   
+   * **Lista de componentes**:
+   
+     |#|Elemento|Cantidad|
+     |--|--|--|
+     |1|ESP32|1|
+     |2|PASSIVE BUZZER (kit Elegoo)|1|
+
+   * **Esquematico**:
+
+     ![ESP32-alarm-sch](ESP32-ALARM_sch.png)
+
+   * **Conexión**: 
+     
+     ![ESP32-alarm-bb](ESP32-ALARM_bb.png)
+
+2. **Librerias**: 
+   
+   |#|Libreria|Observaciones|
+   |---|---|---|
+   |1|PubSubClient|Libreria que implementa el protocolo MQTT|
+   |2|ArduinoJsON ([link](https://arduinojson.org/))|Libreria para manejar información en formato JSON|
+
+3. **Parametros WiFi**:
+   
+   |Parametro|Valor|
+   |---|---|
+   |SSID|```"IoT"```|
+   |PASSWORD|```"1245678h"```|
+
+4. **Parametros MQTT**: 
+   
+   |Parametro|Valor|
+   |---|---|
+   |BROKER|```"192.168.43.55"```|
+   |ID|```"thing-002"```|
+   
+5. **Topicos**:
+   
+   |#|Topico|Mensaje|Descripción|Rol (S/P)|
+   |---|---|---|---|---|
+   |1|```store/sensor/pir```|```{"alarm":cmd}```|```cmd``` corresponde un valor entero que indica presencia (```1```) o ausencia (```0```) de personas.|```S```|
+   
+
+6. **Código**:
+
+**Archivo de configuración**: platformio.ini
+
+```ini
+[env:nodemcu-32s]
+platform = espressif32
+board = nodemcu-32s
+framework = arduino
+lib_deps = 
+	bblanchon/ArduinoJson@^6.21.3
+	knolleary/PubSubClient@^2.8
+```
+
+**Header**: config.h
+
+```h
+#pragma once
+
+#include <string>
+
+using namespace std;
+
+// ESP32 I/O config
+// Alarm
+#define LIGHT_PIN 2 
+// Buzzer
+#define BUZZER_PIN 5
+
+// WiFi credentials
+const char *SSID = "IoT";
+const char *PASSWORD = "1245678h";
+
+// MQTT settings
+const string ID = "thing-002";
+
+const string BROKER = "192.168.43.55";
+const string CLIENT_NAME = ID + "ESP32-ALARM";
+
+const string TOPIC = "store/sensor/pir";
+```
+
+**Archivo main**: main.cpp
+
+```cpp
+#include <Arduino.h>
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
+
+#include "config.h"
+
+WiFiClient espClient;
+PubSubClient client(espClient); // Setup MQTT client
+
+const int BUZZER_CHANNEL = 0;
+const int FREQ = 1000;
+const int RESOLUTION = 8;
 
 
-<!--
+// --- ESP32
 
-Luego registre el dispositivo https://dweet.io/follow
+void setup_ports() {
+  pinMode(LIGHT_PIN, OUTPUT); // Configure LIGHT_PIN as an output
+  // BUZZER PWM init
+  ledcSetup(BUZZER_CHANNEL, FREQ, RESOLUTION);
+  // BUZZER pin init
+  ledcAttachPin(BUZZER_PIN, BUZZER_CHANNEL); 
+}
 
-https://dweet.io/dweet/for/my-thing-name?hello=world
+// ---- Wifi
 
-https://dweet.io/dweet/for/my-thing-name?hello=world
+void connectWiFi() {
+  Serial.print("Connecting to ");
+  Serial.print(SSID);
+  while (WiFi.status() != WL_CONNECTED) {   
+    Serial.print(".");
+    WiFi.begin(SSID, PASSWORD, 6);
+    delay(500);
+  }
+  Serial.println();
+  Serial.print(ID.c_str());
+  Serial.println(" connected!");
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+}
 
-String url = "/dweet/for/" + thing_name + "?value=" + String(sensorValue);
--->
+// ---- MQTT
 
-Registre la cosa dando click en el boton **POST** tal y como se muestra a continuación:
 
-![dweet1_reg](dweet1_reg.png)
+// Handle incomming messages from the broker
+void clientCallback(char* topic, byte* payload, unsigned int length) {
+  String response;
 
-En los campos que se despliegan coloque el nombre que le pondra a la cosa, en este ejemplo se uso **node001** tal y como se mostro en la siguiente figura:
+  for (int i = 0; i < length; i++) {
+    response += (char)payload[i];
+  }
+  Serial.print("Message arrived [");
+  Serial.print(TOPIC.c_str());
+  Serial.print("] ");
+  Serial.println(response);
 
-![dweet1](dweet1.png)
+  
+  DynamicJsonDocument doc(1024);
+  deserializeJson(doc, response);
+  JsonObject obj = doc.as<JsonObject>();
 
-Verifique que la cosa esta registrada en https://dweet.io/follow colocando el nombre de la cosa (```node001``` en este caso):
+  bool alarm_on = obj["alarm"];
+  if(alarm_on == HIGH)  {
+    // Turn the light on
+    digitalWrite(LIGHT_PIN, HIGH);
+    ledcWrite(BUZZER_CHANNEL, 128);
+  }
+  else if (alarm_on == LOW) {  
+    // Turn the light off
+    digitalWrite(LIGHT_PIN, LOW);
+    ledcWriteTone(BUZZER_CHANNEL, 0);
+  }
+}
 
-![dweet2](dweet2.png)
+void reconnectMQTTClient() {
+  while (!client.connected()) {
+    Serial.println("Attempting MQTT connection...");
+    if (client.connect(CLIENT_NAME.c_str())) {
+      Serial.print("connected to Broker: ");
+      Serial.println(BROKER.c_str());
+      // Topic(s) subscription
+      client.subscribe(TOPIC.c_str());
+    }
+    else {
+      Serial.print("Retying in 5 seconds - failed, rc=");
+      Serial.println(client.state());
+      delay(5000);
+    }
+  }
+}
 
-Para ver los datos que envia la cosa vaya en el navegador a https://dweet.io/follow/thing_name, donde ```thing_name``` es el nombre de la cosa (```node001``` en este caso):
+void createMQTTClient() {
+  client.setServer(BROKER.c_str(), 1883);
+  client.setCallback(clientCallback);
+  reconnectMQTTClient();
+}
 
-![dweet3](dweet3.png)
+void setup() {
+  // Setup ports
+  setup_ports();
+  // Serial setup
+  Serial.begin(9600);
+  while (!Serial)
+    ; // Wait for Serial to be ready
+  delay(1000);
+  connectWiFi();
+  createMQTTClient();
+}
 
-Usando el API, coloque manualmente un valor cualquiera usando el par ```{KEY: VALUE}```, en este caso ```KEY``` es ```"value"``` y ```VALUE``` es ```0```. De este modo los parametros seran ```{"value": 0}``` tal y como se muestra a continuación:
+void loop() {
+  reconnectMQTTClient();
+  client.loop();
+  delay(1000);
+}
+```
+#### Debug de la Thing 2 - ESP-ALARM
 
-![dweet4](dweet4.png)
+La siguiente figura muestra el debug realizado para verificar que la **cosa** funciona bien:
 
-Luego observe nuevamente la direccion de la cosa, en nuestro caso: https://dweet.io/follow/node001. 
+![debug_alarm](mqtt-ejemplo2-debug_alarm.png)
 
-Proceda a descargar en la ESP32 el código; este despues de ponerse a funcionar arroja la siguiente salida en el monitor serial:
+La salida del monitor serial para ESP32 se muestra a continuación:
 
-![serial_esp32](serial_esp32.png)
+![serial_alarm](ejemplo_alarm_serial_output.png)
 
-Notese que el ESP32 esta haciendo peticiones para colocar los datos en **dweet.io**, esto se puede corroborar cargango la pagina de la cosa https://dweet.io/follow/node001. La siguiente figura muestra la grafica en el tiempo de los valores enviados:
+La siguiente tabla resume los comandos empleados para realizar el debug de esta cosa:
 
-![dweet5](dweet5.png)
+|Acción|Comando mosquito|
+|---|---|
+|Activar el buzzer enviando un comando que simula la presencia de alguien|```mosquitto_pub -t store/sensor/pir -m '{"alarm":1}' ```|
+|Desactivar el buzzer enviando un comando que simula que ya no hay nadie|```mosquitto_pub -t store/sensor/pir -m '{"alarm":0}' ```|
+|Observación de los comandos enviados al ESP32|```mosquitto_sub -t store/sensor/pir```|
 
-## Actividad
+La salida al aplicar los comandos anteriores se muestra a continuación:
 
-Explore la creación de una dashboard que se asocie a la información que usted esta enviando en este ejemplo precionando el boton **Create a Custom DashBoard**.
+![debug-alarma](mqtt_ejemplo2_debug_alarm.png)
 
-![dweet8](dweet8.png)
+La siguiente figura muestra el debug de la alarma si se hubiera usado el MQTT explorer:
 
-## Enlaces
+![debug-alarma_MQTT-explore](mqtt_ejemplo2_debug_alarm-ESP-explorer.png)
 
-* https://wokwi.com/projects/348987008435094100
-* https://www.esp32.com/viewtopic.php?t=20934
-* https://www.home-assistant.io/integrations/dweet/
-* https://yungger.medium.com/so-easy-micropython-dweet-io-iot-cloud-platform-42ade3b12187
-* https://www.hackster.io/javier-munoz-saez/esp8266-sending-data-to-an-online-deskboard-3e7e91
-* https://github.com/phyunsj/dweet.io-node-red
-* http://developers.sensetecnic.com/article/post-data-to-dweetio-using-fred/
-* https://docs.iotify.io/temp/untitled-4
-* https://www.learnrobotics.org/blog/create-a-database-for-iot-using-dweet-io-tutorial/
-* https://www.learnrobotics.org/blog/nodemcu-dweet-io-freeboard-io-tutorial-for-iot/
+## Integración de las cosas
+
+Para hacer el debug completo de todo a la vez, se ponen a funcionar de manera simultanea todas las cosas y por medio de un cliente se puede observar el uso de mensajes entre las cosas implicadas:
+
+![debug](mqtt-ejemplo2-local-debug.png)
+
+## Simulaciones
+
+* **Thing 1 (ESP-PIR)**: [link](https://wokwi.com/projects/378574466884158465)
+* **Thing 2 (ESP-ALARM)**: [link](https://wokwi.com/projects/378591120304957441)
+
+## Referencias
+
+* https://randomnerdtutorials.com/esp32-date-time-ntp-client-server-arduino/
+* https://hackmd.io/@fablabbcn/rydUz5cqv
+* https://randomnerdtutorials.com/esp32-mqtt-publish-subscribe-arduino-ide/
+* https://www.hackster.io/harshkc2000/toit-and-esp32-mqtt-based-motion-alert-system-7f281a
+* https://esp32tutorials.com/esp32-mqtt-publish-ds18b20-node-red-esp-idf/
+* https://learn.sparkfun.com/tutorials/introduction-to-mqtt/all
+* https://learn.adafruit.com/adafruit-io/mqtt-api
+* https://github.com/adafruit/Adafruit_IO_Arduino
+* https://wokwi.com/projects/321525495180034642
+* https://arduinojson.org/
+* https://espressif-docs.readthedocs-hosted.com/projects/arduino-esp32/en/latest/api/ledc.html
+* https://www.pinguytaz.net/index.php/2021/09/21/musica-con-un-arduinoesp32-y-un-buzzer/
+* https://randomnerdtutorials.com/esp32-pwm-arduino-ide/
+* https://esp32tutorials.com/esp32-mqtt-publish-ds18b20-node-red-esp-idf/
+
+
 
