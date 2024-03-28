@@ -53,7 +53,7 @@ Antes de proseguir, verifique el el programa del ESP32 funciona correctamente (e
 
 ## Aplicación Node-RED
 
-El procedimiento para crear esta aplicación usando Node-RED se muestra con mas detalle en el siguiente [link]()
+El procedimiento para crear esta aplicación usando Node-RED se muestra con mas detalle en el siguiente [link](procedimiento/README.md)
 
 ### Interfaz grafica
 
