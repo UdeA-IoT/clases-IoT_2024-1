@@ -11,7 +11,7 @@ Nota: Para este caso el NodeMCU se conecto en el puerto COM4.
 ```JSON
 [
     {
-        "id": "8f03c2fcbd51514e",
+        "id": "6ec40abc05cebb99",
         "type": "tab",
         "label": "LedSerial",
         "disabled": false,
@@ -19,43 +19,13 @@ Nota: Para este caso el NodeMCU se conecto en el puerto COM4.
         "env": []
     },
     {
-        "id": "4223f9a6022ad425",
-        "type": "serial in",
-        "z": "8f03c2fcbd51514e",
-        "name": "",
-        "serial": "2d788a5279b4022f",
-        "x": 240,
-        "y": 920,
-        "wires": [
-            [
-                "a0f7810da1e7da19"
-            ]
-        ]
-    },
-    {
-        "id": "a0f7810da1e7da19",
-        "type": "debug",
-        "z": "8f03c2fcbd51514e",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 1020,
-        "wires": []
-    },
-    {
-        "id": "e21cac250786043c",
+        "id": "fa62277b6b50eca9",
         "type": "ui_switch",
-        "z": "8f03c2fcbd51514e",
+        "z": "6ec40abc05cebb99",
         "name": "",
         "label": "switch",
         "tooltip": "",
-        "group": "6b1e2e21762b19c2",
+        "group": "ef411bb7c870b8b4",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -64,11 +34,11 @@ Nota: Para este caso el NodeMCU se conecto en el puerto COM4.
         "topic": "topic",
         "topicType": "msg",
         "style": "",
-        "onvalue": "1",
+        "onvalue": "h",
         "onvalueType": "str",
         "onicon": "",
         "oncolor": "",
-        "offvalue": "0",
+        "offvalue": "l",
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
@@ -78,28 +48,28 @@ Nota: Para este caso el NodeMCU se conecto en el puerto COM4.
         "y": 240,
         "wires": [
             [
-                "376f8e5d0443b0b3",
-                "907e42d0afe16e15",
-                "e09580f758a4e79d"
+                "4b506ccd2ea60188",
+                "98e385d0b0f255af",
+                "1cb4cdf5a9c9e1b4"
             ]
         ]
     },
     {
-        "id": "376f8e5d0443b0b3",
+        "id": "4b506ccd2ea60188",
         "type": "serial out",
-        "z": "8f03c2fcbd51514e",
+        "z": "6ec40abc05cebb99",
         "name": "",
-        "serial": "2d788a5279b4022f",
+        "serial": "fbe7cabfd61ab0d8",
         "x": 410,
         "y": 160,
         "wires": []
     },
     {
-        "id": "907e42d0afe16e15",
+        "id": "98e385d0b0f255af",
         "type": "debug",
-        "z": "8f03c2fcbd51514e",
+        "z": "6ec40abc05cebb99",
         "name": "Comando enviado",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -112,11 +82,11 @@ Nota: Para este caso el NodeMCU se conecto en el puerto COM4.
         "wires": []
     },
     {
-        "id": "e09580f758a4e79d",
+        "id": "1cb4cdf5a9c9e1b4",
         "type": "ui_led",
-        "z": "8f03c2fcbd51514e",
+        "z": "6ec40abc05cebb99",
         "order": 2,
-        "group": "6b1e2e21762b19c2",
+        "group": "ef411bb7c870b8b4",
         "width": 0,
         "height": 0,
         "label": "Led",
@@ -143,9 +113,20 @@ Nota: Para este caso el NodeMCU se conecto en el puerto COM4.
         "wires": []
     },
     {
-        "id": "2d788a5279b4022f",
+        "id": "ef411bb7c870b8b4",
+        "type": "ui_group",
+        "name": "Group - Serial UI",
+        "tab": "56b83ff5f6280354",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "fbe7cabfd61ab0d8",
         "type": "serial-port",
-        "serialport": "COM4",
+        "serialport": "COM7",
         "serialbaud": "9600",
         "databits": "8",
         "parity": "none",
@@ -162,26 +143,21 @@ Nota: Para este caso el NodeMCU se conecto en el puerto COM4.
         "responsetimeout": "10000"
     },
     {
-        "id": "6b1e2e21762b19c2",
-        "type": "ui_group",
-        "name": "Serial ON/OFF",
-        "tab": "967cce18485c37d2",
-        "order": 2,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "967cce18485c37d2",
+        "id": "56b83ff5f6280354",
         "type": "ui_tab",
-        "name": "Home Serial",
+        "name": "Serial UI",
         "icon": "dashboard",
+        "order": 3,
         "disabled": false,
         "hidden": false
     }
 ]
 ```
+
+
+Agregando interfaz
+
+
 
 ## Circuito
 
@@ -190,30 +166,6 @@ Dibujar el circuito en fritzing.
 ## Codigo
 
 ```C++
-#define LED_BUILTIN 2 // opens serial port, sets data rate to 9600 bps
-
-int incomingByte = 0; // for incoming serial data
-
-#define ON '1'
-#define OFF '0'
-
-void setup() {
-  pinMode(LED_BUILTIN, OUTPUT);
-  Serial.begin(9600); // opens serial port, sets data rate to 9600 bps
-}
-
-void loop() {
-  // send data only when you receive data:
-  if (Serial.available() > 0) {
-    // read the incoming byte:
-    incomingByte = Serial.read();
-    if(incomingByte == ON) {
-      digitalWrite(LED_BUILTIN, LOW);      
-    }
-    else {
-      digitalWrite(LED_BUILTIN, OFF);   
-    }
-  }
-}
+// Es otro codigo...
 ```
 
