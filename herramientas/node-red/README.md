@@ -79,13 +79,15 @@ A continuación se van a realizar dos ejemplos en los cuales se va a mostrar com
 
 ## Referencias
 
-1. https://knolleary.net/node-red-workshop-photobooth/
-2. https://nodered.org/docs/faq/interacting-with-arduino
-3. http://support.elmark.com.pl/advantech/icom/routery/moduly_uzytkownika/Node.js/node-red-application-note-20200618.pdf
-4. https://knolleary.net/node-red-workshop-photobooth/pdf/node-red-workshop-photobooth.pdf
-5. https://www.snap4city.org/download/video/Node-RED_dashboard_user_manual.pdf
-6. https://tech.ebu.ch/docs/events/opensource17/presentations/Streampunk.pdf
-7. https://developer.cisco.com/meraki/build/node-red-getting-started-with-cisco-meraki-apis/
-8. https://ibmcloud-watson-day.mybluemix.net/files/Lab.Node-RED-SocialDashboard.pdf
+1. https://www.digikey.com/en/maker/search-results?k=node-red
+2. https://knolleary.net/node-red-workshop-photobooth/
+3. https://nodered.org/docs/faq/interacting-with-arduino
+4. http://support.elmark.com.pl/advantech/icom/routery/moduly_uzytkownika/Node.js/node-red-application-note-20200618.pdf
+5. https://knolleary.net/node-red-workshop-photobooth/pdf/node-red-workshop-photobooth.pdf
+6. https://www.snap4city.org/download/video/Node-RED_dashboard_user_manual.pdf
+7. https://tech.ebu.ch/docs/events/opensource17/presentations/Streampunk.pdf
+8. https://developer.cisco.com/meraki/build/node-red-getting-started-with-cisco-meraki-apis/
+9. https://ibmcloud-watson-day.mybluemix.net/files/Lab.Node-RED-SocialDashboard.pdf
+    
    
    

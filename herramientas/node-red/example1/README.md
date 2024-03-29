@@ -123,3 +123,6 @@ example1.json
 ]
 ```
 
+## Referencias
+
+1. https://www.digikey.com/en/maker/tutorials/2022/how-to-install-and-get-started-with-node-red

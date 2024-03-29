@@ -554,6 +554,8 @@ A continuación se muestran algunos ejemplos adicionales en los cuales se usa el
 
 ## Referencias
 
+* https://www.digikey.com/en/maker/search-results?k=mqtt
+* https://www.digikey.com/en/maker/tutorials/2018/how-to-use-basic-mqtt-on-arduino
 * https://cedalo.com/blog/mqtt-and-arduino-setup-guide/
 * https://www.valvers.com/open-software/arduino/esp32-mqtt-tutorial/#debug-output
 * https://cedalo.com/blog/enabling-esp32-mqtt/
