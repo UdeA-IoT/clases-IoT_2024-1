@@ -1,0 +1,220 @@
+[
+    {
+        "id": "b5b31cbd9a910d1b",
+        "type": "tab",
+        "label": "example4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2d362c093347f7d5",
+        "type": "inject",
+        "z": "b5b31cbd9a910d1b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "9998ae1a52166dae",
+                "53c79e655216d0a2"
+            ]
+        ]
+    },
+    {
+        "id": "53c79e655216d0a2",
+        "type": "function",
+        "z": "b5b31cbd9a910d1b",
+        "name": "Generate Random Number",
+        "func": "// generate random number\nvar min = 1 ;\nvar max = 10 ;\nvar a = Math.floor( Math.random() * (max + 1 - min) ) +\nmin ;\n// set random number to message\nmsg.payload = a;\n\n// return message\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "3f942088dadeaaa4",
+                "b248fc7cf942f774"
+            ]
+        ]
+    },
+    {
+        "id": "3f942088dadeaaa4",
+        "type": "switch",
+        "z": "b5b31cbd9a910d1b",
+        "name": "Big and Small",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "6",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "5",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 680,
+        "y": 280,
+        "wires": [
+            [
+                "503df229f579b5af"
+            ],
+            [
+                "767379042f4ce522"
+            ]
+        ]
+    },
+    {
+        "id": "9998ae1a52166dae",
+        "type": "debug",
+        "z": "b5b31cbd9a910d1b",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "1b99367bd8193a5b",
+        "type": "debug",
+        "z": "b5b31cbd9a910d1b",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "54d627bf04cbd8f1",
+        "type": "debug",
+        "z": "b5b31cbd9a910d1b",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "503df229f579b5af",
+        "type": "template",
+        "z": "b5b31cbd9a910d1b",
+        "name": "Output Small",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The number is small: {{payload}} !",
+        "output": "str",
+        "x": 910,
+        "y": 200,
+        "wires": [
+            [
+                "1b99367bd8193a5b"
+            ]
+        ]
+    },
+    {
+        "id": "767379042f4ce522",
+        "type": "template",
+        "z": "b5b31cbd9a910d1b",
+        "name": "Output Big",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "The number is big: {{payload}} !",
+        "output": "str",
+        "x": 910,
+        "y": 360,
+        "wires": [
+            [
+                "1b99367bd8193a5b"
+            ]
+        ]
+    },
+    {
+        "id": "b248fc7cf942f774",
+        "type": "change",
+        "z": "b5b31cbd9a910d1b",
+        "name": "Change to String",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "It has been changed to string data!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 690,
+        "y": 460,
+        "wires": [
+            [
+                "54d627bf04cbd8f1"
+            ]
+        ]
+    },
+    {
+        "id": "d3501ae14f21e4a2",
+        "type": "comment",
+        "z": "b5b31cbd9a910d1b",
+        "name": "Function Nodes",
+        "info": "",
+        "x": 640,
+        "y": 80,
+        "wires": []
+    }
+]

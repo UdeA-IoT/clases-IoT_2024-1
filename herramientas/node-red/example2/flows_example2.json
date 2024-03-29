@@ -1,0 +1,112 @@
+[
+    {
+        "id": "b5b31cbd9a910d1b",
+        "type": "tab",
+        "label": "example2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "14c6cb1351a6dda1",
+        "type": "http in",
+        "z": "b5b31cbd9a910d1b",
+        "name": "",
+        "url": "/test",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 280,
+        "wires": [
+            [
+                "a39248134ebad966"
+            ]
+        ]
+    },
+    {
+        "id": "78471f8625477adb",
+        "type": "http response",
+        "z": "b5b31cbd9a910d1b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 730,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a39248134ebad966",
+        "type": "template",
+        "z": "b5b31cbd9a910d1b",
+        "name": "status",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"status\":\"ok\"}",
+        "output": "json",
+        "x": 510,
+        "y": 280,
+        "wires": [
+            [
+                "78471f8625477adb",
+                "581801af4213d13f"
+            ]
+        ]
+    },
+    {
+        "id": "c5bf0c951cf0c52b",
+        "type": "http in",
+        "z": "b5b31cbd9a910d1b",
+        "name": "",
+        "url": "/web",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 320,
+        "y": 380,
+        "wires": [
+            [
+                "7ffa0dca6fe371f9"
+            ]
+        ]
+    },
+    {
+        "id": "7ffa0dca6fe371f9",
+        "type": "template",
+        "z": "b5b31cbd9a910d1b",
+        "name": "web_page",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\n    <head>\n        <title>Node-RED Web sample</title>\n    </head>\n    <body>\n        <h1>Hello Node-RED!!</h1>\n        <h2>Menu 1</h2>\n        <p>It is Node-RED sample webpage.</p>\n        <hr>\n        <h2>Menu 2</h2>\n        <p>It is Node-RED sample webpage.</p>\n    </body>\n</html>",
+        "output": "str",
+        "x": 490,
+        "y": 380,
+        "wires": [
+            [
+                "78471f8625477adb",
+                "581801af4213d13f"
+            ]
+        ]
+    },
+    {
+        "id": "581801af4213d13f",
+        "type": "debug",
+        "z": "b5b31cbd9a910d1b",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 460,
+        "wires": []
+    }
+]

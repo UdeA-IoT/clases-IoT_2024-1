@@ -1,0 +1,137 @@
+[
+    {
+        "id": "b5b31cbd9a910d1b",
+        "type": "tab",
+        "label": "example3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "88a6bee3d445772c",
+        "type": "inject",
+        "z": "b5b31cbd9a910d1b",
+        "name": "measure",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"Temperature\":24.96,\"Humidity\":66.67}",
+        "payloadType": "json",
+        "x": 200,
+        "y": 160,
+        "wires": [
+            [
+                "752b5ba2ca525038"
+            ]
+        ]
+    },
+    {
+        "id": "db5cebd9490966f9",
+        "type": "complete",
+        "z": "b5b31cbd9a910d1b",
+        "name": "",
+        "scope": [
+            "88a6bee3d445772c"
+        ],
+        "uncaught": false,
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "792e1e50c846f1e1"
+            ]
+        ]
+    },
+    {
+        "id": "c3ef877e69106463",
+        "type": "catch",
+        "z": "b5b31cbd9a910d1b",
+        "name": "",
+        "scope": [
+            "88a6bee3d445772c"
+        ],
+        "uncaught": false,
+        "x": 210,
+        "y": 420,
+        "wires": [
+            [
+                "792e1e50c846f1e1"
+            ]
+        ]
+    },
+    {
+        "id": "bdd238278d25c462",
+        "type": "comment",
+        "z": "b5b31cbd9a910d1b",
+        "name": "Common Nodes",
+        "info": "",
+        "x": 440,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "752b5ba2ca525038",
+        "type": "debug",
+        "z": "b5b31cbd9a910d1b",
+        "name": "debug1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "792e1e50c846f1e1",
+        "type": "debug",
+        "z": "b5b31cbd9a910d1b",
+        "name": "debug2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "eb50cf8ead2cf85d",
+        "type": "comment",
+        "z": "b5b31cbd9a910d1b",
+        "name": "meassure OK",
+        "info": "",
+        "x": 190,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8a2527061c3a7df8",
+        "type": "comment",
+        "z": "b5b31cbd9a910d1b",
+        "name": "meassure ERROR",
+        "info": "",
+        "x": 170,
+        "y": 380,
+        "wires": []
+    }
+]
