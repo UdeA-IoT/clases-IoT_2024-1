@@ -33,10 +33,10 @@
    <img src = "example5_gpio.png">
    </p> 
 
-6. El siguiente ejemplo es tomado del enlace esta asociado al [Experiment 2: Play Sounds](https://learn.sparkfun.com/tutorials/python-programming-tutorial-getting-started-with-the-raspberry-pi/experiment-2-play-sounds) tomado del [Python Programming Tutorial: Getting Started with the Raspberry Pi](https://learn.sparkfun.com/tutorials/python-programming-tutorial-getting-started-with-the-raspberry-pi) de sparkfun. El circuito asociado se muestra a continuación:
-   
-   <p align = "center">
-   <img src = "pi_fritzing_01b.png">
-   </p> 
-   
-7. Ejemplo tomado y adaptado del siguiente [enlace](https://learn.adafruit.com/playing-sounds-and-using-buttons-with-raspberry-pi/)
+## Referencias
+
+* https://gpiozero.readthedocs.io/en/stable/recipes.html
+* https://readthedocs.org/projects/gpiozero/downloads/pdf/stable/
+* https://www.makeuseof.com/tag/gpio-zero-raspberry-pi/
+* https://bennuttall.com/gpio-zero-developing-a-new-friendly-python-api-for-physical-computing/
+* https://www.raspberrypi.com/news/gpio-zero-a-friendly-python-api-for-physical-computing/

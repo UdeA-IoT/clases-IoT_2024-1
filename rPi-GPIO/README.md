@@ -123,15 +123,6 @@ Conocido como el bus serial de cuatro cables. El SPI permite encadenar múltiple
 > https://pinout.xyz/
 
 
-
-
-
-
-
-
-
-
-
 ## Referencias
 
 * https://projects.raspberrypi.org/en/projects/physical-computing/
@@ -147,3 +138,5 @@ Conocido como el bus serial de cuatro cables. El SPI permite encadenar múltiple
 * https://raspberry-valley.azurewebsites.net/Pin-Layout-on-Raspberry-Pi/
 * https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/
 * https://pinout.xyz/
+* https://github.com/iot-udea/sesiones_magistrales/tree/master/ejemplos_26_08_2019
+* https://github.com/iot-udea/sesiones_magistrales/tree/master
