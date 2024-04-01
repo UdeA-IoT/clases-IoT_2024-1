@@ -1,0 +1,9 @@
+Ejemplo Kivy con dos archivos .kv yy .py
+
+
+Para Buster:
+ nano ~/.kivy/config.ini 
+
+
+comentar la línea:
+#%(name)s = probesysfs,provider=hidinput

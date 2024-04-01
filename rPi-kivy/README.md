@@ -137,5 +137,10 @@ Para probar que la instalación este correcta vamos a ejecutar varios ejemplos p
 
 ## Ejemplos
 
-Ejemplo 1 (https://github.com/UdeA-IoT/tutorial-kivy).
 
+## Referencias
+
+* https://realpython.com/mobile-app-kivy-python/
+* https://likegeeks.com/kivy-tutorial/
+* https://kivy.org/doc/stable/tutorials/crashcourse.html
+* https://www.youtube.com/playlist?list=PLdNh1e1kmiPP4YApJm8ENK2yMlwF1_edq

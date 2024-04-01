@@ -235,7 +235,6 @@ Si todo esta bien, en el cliente que esta suscrito al topico **`test/topic`** y 
 * https://raspberry-valley.azurewebsites.net/Map-Bluetooth-Controller-using-Python/
 * https://raspberry-valley.azurewebsites.net/Mosquitto/
 * https://mosquitto.org/blog/2013/01/mosquitto-debian-repository/
-  
 * https://cedalo.com/blog/mqtt-broker-raspberry-pi-installation-guide/
 * https://microcontrollerslab.com/install-mosquitto-mqtt-broker-on-raspberry-pi/
 * https://www.support.aceautomation.eu/es/knowledge-base/how-to-install-raspberry-pi-os-raspbian-mosquitto-mqtt-broker-on-a-raspberry-pi/
