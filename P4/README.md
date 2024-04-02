@@ -52,26 +52,34 @@ Como punto de partida básico es bueno recordar los roles que puede tomar el ESP
 Antes de empezar, lo primero que debemos realizar es una prueba basica para verificar el Wi-Fi del modulo **NodeMCU-32S**. De modo que siga los siguientes pasos:
 1. Abra el Arduino IDE.
 2. Seleccione la placa (**Tools > Board > ESP32 Arduino > NodeMCU-32s**).
+   
+   ![seleccion_modulo](modulo_esp32.png)
 
-![seleccion_modulo](modulo_esp32.png)
-
-2. Conecte el modulo NodeMCU-32S al PC.
+3. Conecte el modulo NodeMCU-32S al PC.
 
 4. Seleccione el puerto.
-
-![seleccion_puerto](puerto_seleccion.png)
+   
+   ![seleccion_puerto](puerto_seleccion.png)
 
 5. En la sección de ejemplos (**examples**) busque los ejemplos relacionados con el **NodeMCU-32S** (**Examples for NodeMCU-32S**) y busque el que dice **WifiScan**,asi: **File > Examples > Wifi > WiFiScann**)
-
-![ejemplo_scan](esp32_wifi_scan.png)
+   
+   ![ejemplo_scan](esp32_wifi_scan.png)
    
 6. Compile y descargue el ejemplo a la tarjeta. A diferencia de las otras tarjetas, antes de proceder a la descarga del firmware, en este caso debe dejar presionado el boton **1OO** de la tarjeta y liberarlo apenas aparezca el mensaje ```Connecting...``` en los mensajes de la consola de descarga (Para mas infromación ver: [Getting Started with the ESP32 Development Board](https://randomnerdtutorials.com/getting-started-with-esp32/)):
-
-![conexion](conexion.png)
+   
+   ![conexion](conexion.png)
 
 7. Probar el ejemplo configurando la terminal serial en mismo valor que aparece en el codigo del programa (115200 para este caso). Si todo esta bien, saldrá en el monitor serial la información de las redes Wi-Fi disponibles tal y como se muestra a continuación:
+   
+   ![scaneo](scann_wifi_terminal.png)
 
-![scaneo](scann_wifi_terminal.png)
+   El resultado de realizar el scaneo en platformio se muestra en la siguiente figura: 
+   
+   ![scaneo-platformio](scann_wifi_terminal-platformio.png)
+
+> **Simulación Online** </br>
+> * Un ejemplo del WiFi Scan se muestra en la pagina de Wokwi en el siguiente [link](https://wokwi.com/projects/305569599398609473)
+> * El archivo para scanear los access points disponibles se encuentra adaptado en platformio se define en los archivos ([main.cpp](main.cpp) y [platformio.ini](platformio.ini)).
 
 ## Librerias Wifi
 

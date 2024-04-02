@@ -164,6 +164,13 @@ Si se observa la salida serial y se compara al inspecciónar en el navegador la 
 
 ![browser_output](browser_output.png)
 
+## Simulación
+
+La simulación en Wokwi se muestra en el siguiente [link](
+https://wokwi.com/projects/394017617608690689). Es importante anotar, que se realizaron unos cambios breves con el fin de que la simulación funcionara.
+
+![simulacion](simulation_example4.png)
+
 ## Referencias
 
 * https://arduinotogo.com/
