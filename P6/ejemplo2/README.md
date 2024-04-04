@@ -88,7 +88,7 @@ Este programa es una mejora del anterior que realiza las siguientes tareas:
 const char* ssid = "ssid";
 const char* password = "password";
 
-const int analogInPin = 15; // GPIO15
+const int analogInPin = 34; // GPIO34
 int sensorValue = 0;        // Value read from the pot
 
 String thing_name = "node001";
@@ -235,4 +235,5 @@ Explore la creación de una dashboard que se asocie a la información que usted 
 * https://docs.iotify.io/temp/untitled-4
 * https://www.learnrobotics.org/blog/create-a-database-for-iot-using-dweet-io-tutorial/
 * https://www.learnrobotics.org/blog/nodemcu-dweet-io-freeboard-io-tutorial-for-iot/
+* https://brown-cs1600.github.io/
 
