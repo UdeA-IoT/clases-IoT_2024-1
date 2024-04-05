@@ -607,4 +607,4 @@ A continuación se muestran algunos ejemplos adicionales en los cuales se usa el
 * https://docs.arduino.cc/tutorials/mkr-1000-wifi/mkr-1000-mqtt-device-to-device
 * https://diyodemag.com/education/what_the_tech_how_mqtt_works
 * http://www.linux-magazine.com/Issues/2022/262/Home-Assistant-with-MQTT
-* 
+* https://www.emqx.com/en/blog/how-to-use-mqtt-in-python

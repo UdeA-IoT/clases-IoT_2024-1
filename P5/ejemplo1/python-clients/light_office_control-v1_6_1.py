@@ -12,17 +12,12 @@ messLampOff = "OFF"
 # Mensajes
 messReceibed = False
 
-def on_connect(mqttc, obj, flags, rc, properties):
-    if rc == 0:
-        print("Conexion MQTT Establecida")
-    else:
-        print("No se pudo establecer la conexion (return code %d)\n", rc)
-    
+def on_connect(mqttc, obj, flags, rc):
+    print("Conexion MQTT Establecida")
 
 # 1. Creacion de la isntanca del cliente
 CLIENT_ID = "officeLamp"
-mqtt_client = mqtt.Client(callback_api_version =  mqtt.CallbackAPIVersion.VERSION2,
-                          client_id=CLIENT_ID)
+mqtt_client = mqtt.Client(client_id=CLIENT_ID)
 mqtt_client.on_connect = on_connect
 
 # 2. Incovacion del metodo connect
