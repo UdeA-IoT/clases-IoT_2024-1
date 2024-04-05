@@ -27,7 +27,7 @@ Realizar una implementación sencilla que permita el encedido y apagado de un le
    * **Conexión**:
   
      <p align = "center">
-     <img src = "mqtt_ejemplo4_bb.png">
+     <img src = mqtt_ejemplo4_bb.png">
      </p>
 
 2. **Librerias**:
