@@ -21,13 +21,13 @@ Realizar una implementación sencilla que permita el encedido y apagado de un le
    * **Esquematico**:
   
      <p align = "center">
-     <img src = "./mqtt_ejemplo4_sch.png">
+     <img src = "./mqtt_ej4_sch.png">
      </p>
 
    * **Conexión**:
   
      <p align = "center">
-     <img src = "./mqtt_ejemplo4_bb.png">
+     <img src = "./mqtt_ej4_bb.png">
      </p>
 
 2. **Librerias**:
