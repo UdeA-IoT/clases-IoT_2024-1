@@ -1,6 +1,10 @@
 # Ejemplo 4
 
-Realizar una implementación sencilla que permita el encedido y apagado de un led mediante el protocolo MQTT.
+Realizar una implementación sencilla que permita el encedido y apagado de un led mediante el protocolo MQTT. En la siguiente figura se muestra la aplicación:
+
+<p align = "center">
+<img src = "mqtt_ejemplo4.png">
+</p>
 
 
 ## Thing - ESP32
@@ -20,15 +24,15 @@ Realizar una implementación sencilla que permita el encedido y apagado de un le
 
    * **Esquematico**:
   
-     <p align = "center">
-     <img src = "./mqtt_ej4_sch.png">
-     </p>
+    <p align = "center">
+    <img src = "mqtt_ej4_sch.png">
+    </p>
 
    * **Conexión**:
   
-     <p align = "center">
-     <img src = "./mqtt_ej4_bb.png">
-     </p>
+    <p align = "center">
+    <img src = "mqtt_ej4_bb.png">
+    </p>
 
 2. **Librerias**:
    
@@ -200,8 +204,11 @@ Realizar una implementación sencilla que permita el encedido y apagado de un le
         }
         ```
 
-###  Prueba
+###  Prueba mqtt ESP32
 
+<p align = "center">
+<img src = "ejemplo4-ESP32_debug.png">
+</p>
 
 La siguiente tabla muestran los comandos aplicados al cliente para encender y apagar la lampara:
 
@@ -233,3 +240,10 @@ El código de la interfaz se encuentra en el directorio ([link](ejemplo-kivy-iot
   <p align = "center">
   <img src = "lamp_on.png">
   </p>
+
+
+### Prueba MQTT aplicación kivy
+
+<p align = "center">
+<img src = "ejemplo4-app_kivy_debug.png">
+</p>
