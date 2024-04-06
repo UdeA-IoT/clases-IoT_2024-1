@@ -237,7 +237,7 @@ Es necesario realizar la prueba de conectividad entre el ESP32 y la maquina dond
 
 Como se puede ver hay conectividad. De modo que en resumen tenemos las siguientes maquinas en nuestra red:
 
-|Item|Maquina||Aplicaciones|
+|Item|Maquina|IP|Aplicaciones|
 |---|---|---|---|
 |1|PC|`192.168.43.55`|`Broker`, `mosquitto_pub` y `mosquito_sub`|
 |2|ESP32|`192.168.43.162`|cliente mosquitto|
@@ -289,11 +289,102 @@ El código de la interfaz se encuentra en el directorio ([link](ejemplo-kivy-iot
 
 ### Prueba MQTT aplicación kivy
 
+Para probar la aplicación grafica se realizo el montaje mostrado a continuación:
+
 <p align = "center">
 <img src = "ejemplo4-app_kivy_debug.png">
 </p>
 
+En este caso la prueba es mas sencilla por que solo se una equipo dentro del cual todo corre tal y como se resume en la siguiente tabla:
+
+|Item|Maquina|IP|Aplicaciones|
+|---|---|---|---|
+|1|PC|`192.168.43.55`|`Broker`, `Interfaz grafica en kivy (paho-mqtt)`, `mosquitto_pub` y `mosquito_sub`|
+
+Para realizar las pruebas procedemos con la aplicación se siguen los siguientes pasos:
+1. Se ejecuta la interfaz grafica de usuario hecha en kivy:
+   
+   ```
+   python contenedor.py
+   ```
+   
+   Si todo esta bien, la salida será similar a la mostrada a continuación:
+
+   <p align = "center">
+   <img src = "connect_ok.png">
+   </p>
+  
+2. Se ejecutan dos clientes mosquitto en linea de comandos tal y como se describe a continuación:
+   
+   |Detalle|Comando mosquitto_pub|
+   |----|----|
+   |Cliente que recibe comandos desde la interfaz kivy|`mosquitto_sub -t light_outbound`|
+   |Cliente que envia comandos (`OFF/ON`) a la interfaz kivy|<ul>	<li> **Apagado**: `mosquitto_pub -h -t light_inbound -m OFF`</li> <li>**Encendido**: `mosquitto_pub -h -t light_inbound -m ON`</li> </ul>|
+
+3. Realizar las correspondientes pruebas y observar los resultados en las diferentes aplicaciones involucradas:
+   
+   * Se presiona el botón de la interfaz grafica el cual publica el mensaje `ON` al topic `light_outbound`:
+  
+        
+     <p align = "center">
+     <img src = "lamp_OFF.png">
+     </p>
+
+   * Se observa que en el cliente que esta suscrito  a este topico (`light_outbound`) llegue este mensaje:
+     
+     <p align = "center">
+     <img src = "send_command_ON.png">
+     </p>
+
+   * Desde el cliente que publica al  `light_inbound` se envia un comando de apagado `OFF` al topico `light_inbound`:
+  
+     <p align = "center">
+     <img src = "return_command_OFF.png">
+     </p>
+
+   * La aplicación kivy esta suscrita a este topico y cuando le llega un mensaje cambia el estado de la luz. Si todo esta bien este cambio se verá reflejado en la interfaz grafica:
+     
+     <p align = "center">
+     <img src = "lamp_ON.png">
+     </p>
+     
+   * Se vuelve a presionar el boton en la interfaz grafica, en este caso el comando enviado al topic `light_outbound` será `OFF`:
+
+     <p align = "center">
+     <img src = "lamp_ON.png">
+     </p>
+
+   * En el cliente que esta suscrito a `light_outbound`, se verá el nuevo mensaje `OFF` publicado desde la interfaz grafica:
+  
+     <p align = "center">
+     <img src = "send_command_OFF.png">
+     </p>
+
+   * Se publica desde la terminal el mensaje `ON` al topico  `light_inbound`:
+     
+     <p align = "center">
+     <img src = "return_command_ON.png">
+     </p>
+
+   * Finalmente, al recibir el mensaje cambia el estado de la lampara actualizando el icono a apagado:
+     
+     <p align = "center">
+     <img src = "lamp_ON.png">
+     </p>
+  
+Si todo sale tal como se describió lo que resta es poner a funcionar la aplicación completa.
+
+## Despligue de la aplicación
+
+Previamente se probo que cada parte de la aplicación funcionara correctamente, el siguiente paso es juntar todo tal y como se muestra en la siguiente grafica:
+
+<p align = "center">
+<img src = "mqtt_ejemplo4.png">
+</p>
+
+Si todo funciona correctamente, ya deberá ser posible encender y apagar el led conectado a la ESP32 desde la interfaz grafica y que a la vez, se actualice en esta la imagen que muestra el estado actual del led.
 
 ## Referencias
 
-* 
+* https://cedalo.com/blog/how-to-install-mosquitto-mqtt-broker-on-windows/
+* https://www.luisllamas.es/como-instalar-mosquitto-el-broker-mqtt/
