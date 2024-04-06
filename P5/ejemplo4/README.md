@@ -33,13 +33,13 @@ Es importante tener en cuenta que antes de realizar cualquier prueba se tiene qu
    * **Esquematico**:
   
     <p align = "center">
-    <img src = "mqtt_ej4_sch.png">
+    <img src = "mqtt_ejemplo4_sch.jpg">
     </p>
 
    * **Conexión**:
   
     <p align = "center">
-    <img src = "mqtt_ej4_bb.png">
+    <img src = "mqtt_ejemplo4_bb.jpg">
     </p>
 
 
