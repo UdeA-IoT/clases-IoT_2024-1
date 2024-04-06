@@ -554,6 +554,7 @@ A continuación se muestran algunos ejemplos adicionales en los cuales se usa el
 
 ## Referencias
 
+* https://cedalo.com/blog/how-to-install-mosquitto-mqtt-broker-on-windows/
 * https://www.digikey.com/en/maker/search-results?k=mqtt
 * https://www.digikey.com/en/maker/tutorials/2018/how-to-use-basic-mqtt-on-arduino
 * https://cedalo.com/blog/mqtt-and-arduino-setup-guide/

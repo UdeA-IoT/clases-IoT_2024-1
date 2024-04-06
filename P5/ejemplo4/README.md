@@ -6,6 +6,14 @@ Realizar una implementación sencilla que permita el encedido y apagado de un le
 <img src = "mqtt_ejemplo4.png">
 </p>
 
+Es importante tener en cuenta que antes de realizar cualquier prueba se tiene que probar que el mosquitto este corriendo de tal manera que permita las conexiones de dispositivos externos. La siguiente imagen muestra como hacerlo en una maquina windows usando el comando **`netstat`**:
+
+
+<p align = "center">
+<img src = "netstat.png">
+</p>
+
+
 
 ## Thing - ESP32
 
@@ -33,6 +41,7 @@ Realizar una implementación sencilla que permita el encedido y apagado de un le
     <p align = "center">
     <img src = "mqtt_ej4_bb.png">
     </p>
+
 
 2. **Librerias**:
    
@@ -206,24 +215,60 @@ Realizar una implementación sencilla que permita el encedido y apagado de un le
 
 ###  Prueba mqtt ESP32
 
+
+La siguiente figura muestra la topologia de prueba. En el caso, el broker y los dos clientes de mosquitto (`mosquitto_pub` y `mosquitto_sub`) corren en el PC, mientras que el otro cliente corre en la ESP32. 
+
 <p align = "center">
 <img src = "ejemplo4-ESP32_debug.png">
 </p>
+
+
+Al conectar el ESP32 al monitor serial, el siguiente resultado:
+
+<p align = "center">
+<img src = "ESP32_serial-out.png">
+</p>
+
+Es necesario realizar la prueba de conectividad entre el ESP32 y la maquina donde se encuentra el broker. Para esto, se abre una terminal y se ejecuta el comando ping a la IP que se asigno al ESP32 (en el caso la `192.168.43.162`). 
+
+<p align = "center">
+<img src = "ping.png">
+</p>
+
+Como se puede ver hay conectividad. De modo que en resumen tenemos las siguientes maquinas en nuestra red:
+
+|Item|Maquina||Aplicaciones|
+|---|---|---|---|
+|1|PC|`192.168.43.55`|`Broker`, `mosquitto_pub` y `mosquito_sub`|
+|2|ESP32|`192.168.43.162`|cliente mosquitto|
+
 
 La siguiente tabla muestran los comandos aplicados al cliente para encender y apagar la lampara:
 
 |Acción	|Comando mosquitto_pub|
 |----|----|
-|Encender el led|`mosquitto_pub -h test.mosquitto.org -t light_outbound -m ON`|
-|Apagar el led|	`mosquitto_pub -h test.mosquitto.org -tlight_outbound -m OFF`|
+|Encender el led|`mosquitto_pub -h IP_BROKER -t light_outbound -m ON`|
+|Apagar el led|	`mosquitto_pub -h IP_BROKER -tlight_outbound -m OFF`|
 
-
-Ahora, vamos a mostrar los mensajes enviados desde la ESP32, para indicar el estado del led, usando el mosquito_sub:
+Para mostrar los mensajes, enviados desde la ESP32, que indican el estado del led se usa el `mosquito_sub`:
 
 ```
-mosquitto_sub -h test.mosquitto.org -t light_inbound
+mosquitto_sub -h IP_BROKER -t light_inbound
 ```
 
+La siguiente figura muestra el resultado de la ejecución de los comandos anteriores:
+
+<p align = "center">
+<img src = "mosquito_pub_sub.png">
+</p>
+
+Despues de aplicar los comandos anteriores, el resultado en la salida en el monitor serial se muestra a continuación:
+
+<p align = "center">
+<img src = "ESP32_serial-terminal2-1.png">
+</p>
+
+Si todo va bien hasta el momento, se debe ver encender y apagar el led conectado a la ESP32 de acuerdo a los comandos que le son enviados.
 
 ## Controlando el encendido y apagado del led desde la interfaz kivy
 
@@ -247,3 +292,8 @@ El código de la interfaz se encuentra en el directorio ([link](ejemplo-kivy-iot
 <p align = "center">
 <img src = "ejemplo4-app_kivy_debug.png">
 </p>
+
+
+## Referencias
+
+* 
