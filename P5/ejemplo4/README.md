@@ -367,9 +367,9 @@ Para realizar las pruebas procedemos con la aplicación se siguen los siguientes
 
    * Finalmente, al recibir el mensaje cambia el estado de la lampara actualizando el icono a apagado:
      
-     <p align = "center">
-     <img src = "lamp_ON.png">
-     </p>
+<p align = "center">
+<img src = "lamp_ON.png">
+</p>
   
 Si todo sale tal como se describió lo que resta es poner a funcionar la aplicación completa.
 
