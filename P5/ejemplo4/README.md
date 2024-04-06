@@ -32,15 +32,15 @@ Es importante tener en cuenta que antes de realizar cualquier prueba se tiene qu
 
    * **Esquematico**:
   
-    <p align = "center">
-    <img src = "mqtt_ejemplo4_sch.jpg">
-    </p>
+     <p align = "center">
+     <img src = "mqtt_ejemplo4_sch.jpg">
+     </p>
 
    * **Conexión**:
   
-    <p align = "center">
-    <img src = "mqtt_ejemplo4_bb.jpg">
-    </p>
+     <p align = "center">
+     <img src = "mqtt_ejemplo4_bb.jpg">
+     </p>
 
 
 2. **Librerias**:
@@ -342,7 +342,7 @@ Para realizar las pruebas procedemos con la aplicación se siguen los siguientes
      </p>
 
    * La aplicación kivy esta suscrita a este topico y cuando le llega un mensaje cambia el estado de la luz. Si todo esta bien este cambio se verá reflejado en la interfaz grafica:
-     
+
      <p align = "center">
      <img src = "lamp_ON.png">
      </p>
@@ -360,16 +360,16 @@ Para realizar las pruebas procedemos con la aplicación se siguen los siguientes
      </p>
 
    * Se publica desde la terminal el mensaje `ON` al topico  `light_inbound`:
-     
+
      <p align = "center">
      <img src = "return_command_ON.png">
      </p>
 
    * Finalmente, al recibir el mensaje cambia el estado de la lampara actualizando el icono a apagado:
-     
-<p align = "center">
-<img src = "lamp_ON.png">
-</p>
+
+     <p align = "center">
+     <img src = "lamp_OFF.png">
+     </p>
   
 Si todo sale tal como se describió lo que resta es poner a funcionar la aplicación completa.
 
