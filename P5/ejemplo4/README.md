@@ -325,9 +325,9 @@ Para realizar las pruebas procedemos con la aplicación se siguen los siguientes
    
    * Se presiona el botón de la interfaz grafica el cual publica el mensaje `ON` al topic `light_outbound`:
           
-<p align = "center">
-<img src = "lamp_OFF.png">
-</p>
+      <p align = "center">
+      <img src = "lamp_OFF.png">
+      </p>
 
    * Se observa que en el cliente que esta suscrito  a este topico (`light_outbound`) llegue este mensaje:
      
