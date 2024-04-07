@@ -132,7 +132,7 @@ Para el control de pines GPIO en la Raspberry Pi existen diferentes bibliotecas 
 
 A continuación se muestran algunos ejemplos usando ambas bibliotecas:
 1. **Ejemplos biblioteca GPIO Zero** ([link](gpio_zero/README.md))
-2. **Ejemplos biblioteca RPi GPIO** ([link](gpio/README.md))
+2. **Ejemplos biblioteca RPi GPIO** ([link](GPIO/README.md))
 
 ## Referencias
 
