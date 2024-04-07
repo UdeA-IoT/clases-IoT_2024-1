@@ -41,6 +41,17 @@
 
    **Solución** [[link]](gpio-zero_example5/README.md)
 
+### Otros ejemplos
+
+Aún no se han documentado.
+
+6. Ejemplo con leds [[link]](gpio-zero_example_leds/)
+7. Ejemplo con botones [[link]](gpio-zero_example_buttons/)
+8. Ejemplo con buzzer [[link]](gpio-zero_example_buzzer/)
+9. Ejemplo usando el teclado [[link]](gpio-zero_example_keyboard/)
+10. Ejemplo con sensores [[link]](gpio-zero_example_sensors/)
+11. Ejemplo con servos [[link]](gpio-zero_example_servos/)
+
 ## Referencias
 
 * https://gpiozero.readthedocs.io/en/stable/recipes.html
