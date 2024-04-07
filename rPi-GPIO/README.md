@@ -3,7 +3,7 @@
 ## Antes de empezar
 
 * https://projects.raspberrypi.org/en/projects/physical-computing/
-* 
+
 
 ## Conector GPIO
 

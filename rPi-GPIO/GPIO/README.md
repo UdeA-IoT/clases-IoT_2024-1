@@ -49,8 +49,8 @@
    <img src = "pi_fritzing_01b.png">
    </p>
 
-   **Solución** [[link]](gpio_example6/README.md)
+   **Solución** [[link]](gpio_example6/)
 
 7. Ejemplo tomado y adaptado del siguiente [enlace](https://learn.adafruit.com/playing-sounds-and-using-buttons-with-raspberry-pi/)
    
-   **Solución** [[link]](gpio_example7/README.md)
+   **Solución** [[link]](gpio_example7/)
