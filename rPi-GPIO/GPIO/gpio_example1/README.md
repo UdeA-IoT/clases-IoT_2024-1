@@ -57,7 +57,6 @@ except KeyboardInterrupt: # If CTRL+C is pressed, exit cleanly:
     GPIO.cleanup() # cleanup all GPIO 
 ```
 
-
 ### Pruebas
 
 To Do...

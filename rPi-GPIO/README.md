@@ -118,53 +118,21 @@ Conocido como el bus serial de cuatro cables. El SPI permite encadenar múltiple
 * Nunca conecte un motor o un speaker directamente a un GPIO pin. El electrical feedback puede dañarlo.
 
 
-
-
-> https://pinout.xyz/
+> **Importante**<br>
+> En la siguiente pagina puede consultar el diagrama de pines para diferentes versiones de la rPi. https://pinout.xyz/
 
 
 ## Control de puertos
 
-Además de GPIO Zero, hay varias otras bibliotecas disponibles para controlar los pines GPIO en una Raspberry Pi. Algunas de las bibliotecas más populares son:
+Para el control de pines GPIO en la Raspberry Pi existen diferentes bibliotecas dentro de las que se destacan:
+* **GPIO Zero**: Esta es la opción ideal para empezar pues permite gestionar de manera mas facil e intuitiva el control de los puertos. Para mas información puede consultar la documentación en el siguiente [link](https://gpiozero.readthedocs.io/en/latest/).
+* **RPi GPIO**: Esta es una libreria de mas bajo nivel que permite un control mas detallado sobre los pines GPIO de la RPi. Su uso requiere un mayor conocimiento de los pines GPIO de la RPi. La documentación puede ser consultda en el siguiente [link](https://pythonhosted.org/RPIO/).
 
-* https://blog.guruface.com/gpio-zero-library-and-rpi-gpio-library/
+## Ejemplos
 
- Both the RPi GPIO library and GPIO Zero Libraries are excellent choices. Let’s see what the peculiarities of each of these python libraries are and how to decide between them.  
-
- When we use the Raspberry Pi GPIO pins to connect external devices, we need to import Library files that help us program these pins.
-
-GPIO Zero
-RPi GPIO
-These are two libraries that can be used to import Raspberry Pi GPIO pins. The ideal option is still up for debate, but this article will give you a basic idea of both of these library files
-
-
-The majority of Raspberry Pi users choose GPIO Zero because it is a superb tool for connecting Raspberry Pi GPIO pins to your code. It also has an easy-to-read and simple-to-write syntax. The significance of RPi GPIO will still exist because it’s a useful method for connecting your GPIO pins with your code and will undoubtedly improve your knowledge. However, you can import the GPIO pins using the GPIO Zero setup if you’re looking for a quick solution.
-
-* https://www.makeuseof.com/tag/gpio-zero-raspberry-pi/
-
-
-The GPIO Zero library is a Python library for working with GPIO pins. It was written by Raspberry Pi community manager Ben Nuttall. Aimed at being intuitive and "friendly," it streamlines Python code for most regular Raspberry Pi use cases.
-
-Combining simple naming practices and descriptive functions, GPIO Zero is more accessible for beginners to understand. Even seasoned users of the RPi.GPIO library may prefer it---and to understand why, let's take a look at how RPi.GPIO compares to GPIO Zero.
-
-
---
-
-Nothing. Nothing at all. RPi.GPIO was released in early 2012 by developer Ben Croston. It is a robust library allowing users to control GPIO pins from code. It features in almost every beginner project we've covered.
-
-Despite its extensive use, RPi.GPIO was never designed for end users. It is a testament to RPi.GPIO's good design that so many beginners use it nonetheless.
-
-
----
-
-While it seems more straightforward on the surface, does the new library have any problems? As with any new coding library, it is a matter of opinion. On the one hand, removing the setup code is excellent for beginners and seasoned coders alike. Writing code is more straightforward and quicker.
-
-On the other hand, knowing exactly what is going on is important for learning. Take the example of setting up a button from the GPIO Zero documentation:
-
-* https://gpiozero.readthedocs.io/en/stable/migrating_from_rpigpio.html
-* https://forums.raspberrypi.com/viewtopic.php?t=204466
-* 
-
+A continuación se muestran algunos ejemplos usando ambas bibliotecas:
+1. **Ejemplos biblioteca GPIO Zero** ([link](gpio_zero/README.md))
+2. **Ejemplos biblioteca RPi GPIO** ([link](gpio/README.md))
 
 ## Referencias
 
@@ -184,3 +152,8 @@ On the other hand, knowing exactly what is going on is important for learning. T
 * https://github.com/iot-udea/sesiones_magistrales/tree/master/ejemplos_26_08_2019
 * https://github.com/iot-udea/sesiones_magistrales/tree/master
 * https://blog.guruface.com/gpio-zero-library-and-rpi-gpio-library/
+* https://learn.sparkfun.com/tutorials/raspberry-gpio/python-rpigpio-api
+* https://blog.guruface.com/gpio-zero-library-and-rpi-gpio-library/
+* https://www.makeuseof.com/tag/gpio-zero-raspberry-pi/
+* https://gpiozero.readthedocs.io/en/stable/migrating_from_rpigpio.html
+* https://forums.raspberrypi.com/viewtopic.php?t=204466
